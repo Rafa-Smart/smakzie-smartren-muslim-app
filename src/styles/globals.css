@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-color: #16a34a;
+    --primary-dark: #15803d;
+    --primary-light: #bbf7d0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-gray-900/80;
+  }
+
+  .islamic-border {
+    position: relative;
+  }
+
+  .islamic-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    @apply bg-gradient-to-r from-transparent via-primary-600 to-transparent;
+  }
+
+  .phone-frame {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    box-shadow: 
+      20px 20px 60px #d9d9d9,
+      -20px -20px 60px #ffffff,
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .phone-frame {
+    background: linear-gradient(145deg, #1f2937, #111827);
+    box-shadow: 
+      20px 20px 60px #0f172a,
+      -20px -20px 60px #1e293b,
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-emerald-600;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-12 lg:py-24;
+  }
+}
