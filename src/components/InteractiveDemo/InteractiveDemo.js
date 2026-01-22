@@ -189,7 +189,9 @@ const InteractiveDemo = () => {
                 <div className="h-px bg-purple-200 dark:bg-purple-800 my-2"></div>
                 <div className="text-right mb-3">
                   <div className="text-lg font-arabic leading-relaxed mb-2">
-                    الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ
+                    الْحَمْدُ لِلَّهِ الَّذِي
+                   أَحْيَانَا بَعْدَ مَا
+                 أَمَاتَنَا وَإِلَيْهِ النُّشُورُ
                   </div>
                   <div className="text-xs text-gray-700 dark:text-gray-300 mb-1">
                     <em>Alhamdu lillahil ladzii ahyanaa ba'da maa amaatanaa wa ilaihin nusyuur</em>
