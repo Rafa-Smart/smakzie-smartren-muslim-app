@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import Header from "./components/Header/Header";
 import HeroSection from "./components/HeroSection/HeroSection";
 import InteractiveDemo from "./components/InteractiveDemo/InteractiveDemo";
@@ -8,37 +9,29 @@ import UIShowcase from "./components/UIShowcase/UIShowcase";
 import CTASection from "./components/CTASection/CTASection";
 import Footer from "./components/Footer/Footer";
 import "./styles/globals.css";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider>
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<HeroSection></HeroSection>}></Route>
-              <Route path="/interactive" element={<InteractiveDemo />}></Route>
-              <Route
-                path="/featuresSection"
-                element={<FeaturesSection />}
-              ></Route>
-
-              <Route
-                path="/uiShowcase"
-                element={<UIShowcase></UIShowcase>}
-              ></Route>
-              <Route
-                path="/ctaSection"
-                element={<CTASection></CTASection>}
-              ></Route>
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </ThemeProvider>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <Router>
+        <ThemeProvider>
+          <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+            <Header />
+            <main>
+              <Routes>
+                <Route path="/" element={<HeroSection />} />
+                <Route path="/interactive" element={<InteractiveDemo />} />
+                <Route path="/features" element={<FeaturesSection />} />
+                <Route path="/ui-showcase" element={<UIShowcase />} />
+                <Route path="/download" element={<CTASection />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </ThemeProvider>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
