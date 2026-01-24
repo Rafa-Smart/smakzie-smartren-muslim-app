@@ -157,13 +157,7 @@ const CTASection = () => {
 
             <div className="bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden">
               <div className="relative">
-                {/* Highlight Badge */}
-                <div className="absolute top-4 right-4 z-10">
-                  <div className="flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 text-white text-sm font-bold shadow-lg">
-                    <CheckCircle className="w-4 h-4" />
-                    <span>PALING DIREKOMENDASIKAN</span>
-                  </div>
-                </div>
+
 
                 <div className="p-6 sm:p-8 md:p-10">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
