@@ -158,7 +158,6 @@ const CTASection = () => {
             <div className="bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden">
               <div className="relative">
 
-
                 <div className="p-6 sm:p-8 md:p-10">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                     {/* Left Column - Info */}
@@ -288,9 +287,7 @@ const CTASection = () => {
                   </div>
                 </div>
                 <div className="flex-1 space-y-3">
-                  <h4 className="font-bold text-gray-900 dark:text-white text-xl">
-                    ⚠️ Hanya untuk Pengguna Tingkat Lanjut
-                  </h4>
+
                   <p className="text-gray-700 dark:text-gray-300">
                     Versi arsitektur spesifik hanya direkomendasikan jika Anda memahami 
                     spesifikasi perangkat Android Anda. Jika tidak yakin, gunakan APK Universal.
