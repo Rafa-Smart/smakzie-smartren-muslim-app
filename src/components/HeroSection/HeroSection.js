@@ -147,7 +147,7 @@ const HeroSection = () => {
                   <div className="flex-1 relative overflow-hidden">
                     <img
                       src="/images/hero-screen.png" // Gambar hero utama
-                      alt="Tampilan Utama MuslimApp"
+                      alt="belum di ss masih nuggu"
                       className="w-full h-full object-contain"
                       style={{ 
                         objectPosition: 'center top',
