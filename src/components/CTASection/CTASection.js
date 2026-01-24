@@ -99,23 +99,7 @@ const CTASection = () => {
           </div>
 
           {/* Mobile Toggle untuk Arsitektur */}
-          <div className="lg:hidden mb-6">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="w-full flex items-center justify-between p-4 rounded-xl bg-white dark:bg-gray-800 shadow-lg"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
-                  <Cpu className="w-5 h-5 text-white" />
-                </div>
-                <div className="text-left">
-                  <div className="font-bold text-gray-900 dark:text-white">Versi APK Lain</div>
-                  <div className="text-xs text-gray-500">ARM64, ARM, x86</div>
-                </div>
-              </div>
-              {isMobileMenuOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-            </button>
-          </div>
+          
 
           {/* Grid untuk Desktop, Stack untuk Mobile */}
           <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6">
