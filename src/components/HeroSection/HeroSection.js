@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Bell, Book, Calendar, Home, Plus, CheckCircle, Clock, MapPin, School, Users, Target, Award, ChevronRight } from 'lucide-react';
+import { Bell, Book, Calendar, Home, Plus, CheckCircle, Clock, MapPin, School, Users, Target, Award, ChevronRight, Link } from 'lucide-react';
 
 const HeroSection = () => {
   const [activeMenu, setActiveMenu] = useState('Home');
@@ -102,7 +102,7 @@ const HeroSection = () => {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
               <a
-                href="#cta"
+              href='/download'
                 className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold hover:from-emerald-700 hover:to-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -110,8 +110,7 @@ const HeroSection = () => {
                 </svg>
                 Download Aplikasi
               </a>
-              <a
-                href="#demo"
+              <a href='/features'
                 className="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 font-semibold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all"
               >
                 Lihat Fitur Lengkap
