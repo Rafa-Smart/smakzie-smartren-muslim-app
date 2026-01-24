@@ -370,14 +370,7 @@ const InteractiveDemo = () => {
                         {screen.title}
                       </span>
                       
-                      {/* Category Badge */}
-                      <span className={`absolute bottom-2 left-2 text-[10px] px-1.5 py-0.5 rounded ${
-                        activeScreen === screen.id
-                          ? 'bg-white/20 text-white/90'
-                          : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-                      }`}>
-                        {screen.category.charAt(0)}
-                      </span>
+   
                     </motion.button>
                   ))}
                 </div>

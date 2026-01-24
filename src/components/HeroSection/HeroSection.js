@@ -5,13 +5,8 @@ import { Bell, Book, Calendar, Home, Plus, CheckCircle, Clock, MapPin, School, U
 const HeroSection = () => {
   const [activeMenu, setActiveMenu] = useState('Home');
   const [showPrayerModal, setShowPrayerModal] = useState(false);
-  const [prayerTimes] = useState([
-    { name: 'Subuh', time: '04:29', passed: false, next: true },
-    { name: 'Dzuhur', time: '12:06', passed: false },
-    { name: 'Ashar', time: '15:29', passed: false },
-    { name: 'Maghrib', time: '18:20', passed: false },
-    { name: 'Isha', time: '19:33', passed: false }
-  ]);
+
+  const jurusan = ['PPLG', 'TKJT', 'Pemasaran', 'Akuntansi', 'Manajemen Perkantoran'];
 
   const handleLogIbadah = () => {
     alert('Catat ibadahmu untuk Smartren Ramadhan 1447 H!');
@@ -21,8 +16,6 @@ const HeroSection = () => {
     setShowPrayerModal(true);
     setTimeout(() => setShowPrayerModal(false), 3000);
   };
-
-  const jurusan = ['PPLG', 'TKJT', 'Pemasaran', 'Akuntansi', 'Manajemen Perkantoran'];
 
   return (
     <section className="section-padding pt-24 lg:pt-32 relative overflow-hidden">
@@ -127,222 +120,73 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Right - Phone Mockup */}
+          {/* Right - Phone Mockup dengan Gambar Saja */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="phone-frame rounded-[2.5rem] p-4 max-w-sm mx-auto">
-              {/* Phone Notch */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-5 bg-black rounded-b-lg z-20"></div>
+            {/* Phone Frame */}
+            <div className="phone-frame rounded-[2.5rem] p-4 max-w-sm mx-auto border-8 border-gray-900 dark:border-gray-100 shadow-2xl">
+
               
-              {/* Screen Content - PERSIS SEPERTI GAMBAR */}
-              <div className="relative bg-gradient-to-b from-emerald-700 via-green-600 to-emerald-800 rounded-[2rem] overflow-hidden h-[600px]">
+              {/* Dynamic Screen Content - Gambar Hero */}
+              <div className="relative bg-black rounded-[2rem] overflow-hidden h-[600px]">
+                <div className="h-full flex flex-col">
+                  {/* Status Bar Simulation */}
+                  <div className="flex justify-between items-center px-6 pt-2 pb-1 bg-black">
+                    <div className="text-white text-xs">22:01</div>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-4 h-2 bg-gray-600 rounded-sm"></div>
+                      <div className="w-3 h-3 rounded-full border border-gray-500"></div>
+                      <div className="w-6 h-2 bg-gray-600 rounded-sm"></div>
+                    </div>
+                  </div>
+                  
+                  {/* Screen Image */}
+                  <div className="flex-1 relative overflow-hidden">
+                    <img
+                      src="../../../public/assets/images/hero-screen.png" // Gambar hero utama
+                      alt="Tampilan Utama MuslimApp"
+                      className="w-full h-full object-contain"
+                      style={{ 
+                        objectPosition: 'center top',
+                        maxHeight: 'calc(100% - 50px)'
+                      }}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = `https://placehold.co/300x550/1a1a2e/ffffff?text=Tampilan+Utama+MuslimApp`;
+                      }}
+                    />
+                    
+                    {/* Fallback jika gambar tidak ditemukan */}
+                    {!document.querySelector('img[src="/assets/images/hero-screen.png"]') && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
+                        <div className="text-center p-6">
+                          <div className={`w-20 h-20 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 flex items-center justify-center mx-auto mb-4`}>
+                            <Home className="w-10 h-10 text-white" />
+                          </div>
+                          <h3 className="text-xl font-bold text-white mb-2">Tampilan Utama MuslimApp</h3>
+                          <p className="text-gray-300 mb-4">Screenshot HP Anda akan tampil di sini</p>
+                          <div className="text-sm text-gray-400">
+                            Simpan sebagai: /assets/images/hero-screen.png
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  
+  
+ 
+                </div>
                 
-                {/* Status Bar */}
-                <div className="pt-2 px-4 flex justify-between items-center text-white text-xs">
-                  <div>22:12</div>
-                  <div className="flex items-center space-x-1">
-                    <div className="w-1 h-3 bg-white"></div>
-                    <div className="w-1 h-3 bg-white"></div>
-                    <div className="w-1 h-3 bg-white"></div>
-                  </div>
-                </div>
-
-                {/* Header */}
-                <div className="px-6 pt-4">
-                  <div className="text-white mb-6">
-                    <div className="text-sm opacity-90">Assalamualaikum,</div>
-                    <div className="text-xl font-bold">PUTRI MAULIDIA YUSUF</div>
-                    <div className="text-xs opacity-80 mt-1">Siswa PPLG - Smakzie</div>
-                  </div>
-
-                  {/* Prayer Notification Card */}
-                  <div 
-                    className="bg-white rounded-2xl p-4 mb-6 shadow-lg relative overflow-hidden cursor-pointer hover:shadow-xl transition-shadow"
-                    onClick={handlePrayerNotification}
-                  >
-                    {/* Background Pattern */}
-                    <div className="absolute top-0 right-0 w-16 h-16 opacity-10">
-                      <div className="w-full h-full bg-gradient-to-br from-emerald-500 to-green-500 rounded-full"></div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-3 relative z-10">
-                      <div className="p-2 rounded-full bg-emerald-100">
-                        <Bell className="w-5 h-5 text-emerald-600" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-xs text-gray-500 mb-1">🔔 MENJELANG</div>
-                        <div className="flex items-baseline justify-between">
-                          <div>
-                            <div className="text-lg font-bold text-gray-800">Subuh</div>
-                            <div className="flex items-center space-x-1 text-sm text-gray-600">
-                              <Clock className="w-3 h-3" />
-                              <span>04:29</span>
-                            </div>
-                          </div>
-                          <div className="flex items-center space-x-1 text-sm text-gray-600">
-                            <MapPin className="w-3 h-3" />
-                            <span>KAB. CIANJUR</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Countdown Bar */}
-                    <div className="mt-3">
-                      <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-emerald-500 to-green-500" style={{ width: '65%' }}></div>
-                      </div>
-                      <div className="flex justify-between text-xs text-gray-500 mt-1">
-                        <span>4 jam 17 menit lagi</span>
-                        <span>05:00</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Main Content - SMARTREN */}
-                <div className="px-6">
-                  <div className="text-center mb-8">
-                    <div className="inline-block px-4 py-1 rounded-full bg-white/20 text-white text-xs font-medium mb-2">
-                      SMARTREN 2026
-                    </div>
-                    <h2 className="text-2xl font-bold text-white mb-4">Catat Ibadahmu Disini!</h2>
-                    
-                    {/* Ibadah Stats */}
-                    <div className="grid grid-cols-3 gap-3 mb-6">
-                      <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
-                        <div className="text-white text-xs mb-1">Shalat</div>
-                        <div className="text-xl font-bold text-white">5/5</div>
-                        <div className="h-1 bg-white/20 rounded-full mt-1">
-                          <div className="h-full bg-emerald-300 rounded-full" style={{ width: '100%' }}></div>
-                        </div>
-                      </div>
-                      <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
-                        <div className="text-white text-xs mb-1">Quran</div>
-                        <div className="text-xl font-bold text-white">1/30</div>
-                        <div className="h-1 bg-white/20 rounded-full mt-1">
-                          <div className="h-full bg-emerald-300 rounded-full" style={{ width: '3%' }}></div>
-                        </div>
-                      </div>
-                      <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
-                        <div className="text-white text-xs mb-1">Puasa</div>
-                        <div className="text-xl font-bold text-white">12/30</div>
-                        <div className="h-1 bg-white/20 rounded-full mt-1">
-                          <div className="h-full bg-emerald-300 rounded-full" style={{ width: '40%' }}></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Log Ibadah Button */}
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={handleLogIbadah}
-                      className="w-full py-3 rounded-xl bg-white text-emerald-700 font-bold text-lg shadow-lg hover:shadow-xl transition-shadow mb-6"
-                    >
-                      <Plus className="w-5 h-5 inline mr-2" />
-                      Catat Ibadah Hari Ini
-                    </motion.button>
-                  </div>
-
-                  {/* Quick Actions */}
-                  <div className="grid grid-cols-3 gap-4 mb-8">
-                    {[
-                      { icon: <Book className="w-6 h-6" />, label: 'Al-Quran', color: 'from-blue-500 to-cyan-500' },
-                      { icon: <Calendar className="w-6 h-6" />, label: 'Jadwal', color: 'from-purple-500 to-pink-500' },
-                      { icon: <Home className="w-6 h-6" />, label: 'Home', color: 'from-emerald-500 to-green-500', active: true }
-                    ].map((action) => (
-                      <motion.button
-                        key={action.label}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`flex flex-col items-center p-3 rounded-xl ${
-                          action.active 
-                            ? 'bg-white shadow-lg' 
-                            : 'bg-white/10 backdrop-blur-sm hover:bg-white/20'
-                        } transition-colors`}
-                        onClick={() => setActiveMenu(action.label)}
-                      >
-                        <div className={`p-2 rounded-lg ${
-                          action.active 
-                            ? `bg-gradient-to-r ${action.color}` 
-                            : 'bg-white/20'
-                        }`}>
-                          {React.cloneElement(action.icon, {
-                            className: `w-5 h-5 ${action.active ? 'text-white' : 'text-white'}`
-                          })}
-                        </div>
-                        <span className={`mt-2 text-sm font-medium ${
-                          action.active ? 'text-emerald-700' : 'text-white'
-                        }`}>
-                          {action.label}
-                        </span>
-                      </motion.button>
-                    ))}
-                  </div>
-
-                  {/* Today's Prayer Times */}
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="text-white font-medium">Waktu Shalat Hari Ini</div>
-                      <div className="text-xs text-white/70">KAB. CIANJUR</div>
-                    </div>
-                    <div className="space-y-2">
-                      {prayerTimes.map((prayer) => (
-                        <div key={prayer.name} className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                            <div className={`w-2 h-2 rounded-full ${
-                              prayer.next ? 'bg-emerald-300 animate-pulse' : 'bg-white/50'
-                            }`}></div>
-                            <span className={`text-sm ${
-                              prayer.next ? 'text-emerald-300 font-semibold' : 'text-white/90'
-                            }`}>
-                              {prayer.name}
-                            </span>
-                          </div>
-                          <span className={`font-mono ${
-                            prayer.next ? 'text-emerald-300 font-bold' : 'text-white/80'
-                          }`}>
-                            {prayer.time}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Prayer Modal */}
-                {showPrayerModal && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-black/70 flex items-center justify-center z-30"
-                  >
-                    <div className="bg-white rounded-2xl p-6 mx-4">
-                      <div className="text-center">
-                        <Bell className="w-12 h-12 text-emerald-500 mx-auto mb-3" />
-                        <h3 className="text-lg font-bold text-gray-800 mb-2">Waktu Subuh Menjelang!</h3>
-                        <p className="text-gray-600 mb-4">
-                          Subuh dimulai pukul <span className="font-bold">04:29</span>
-                        </p>
-                        <div className="text-sm text-gray-500">
-                          Siapkan diri untuk shalat Subuh berjamaah di Smakzie
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
+                {/* Home Indicator */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gray-900/30 dark:bg-gray-100/30 rounded-full"></div>
               </div>
             </div>
 
-            {/* Floating Elements */}
-            <div className="absolute -bottom-6 -left-6 w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-green-400 opacity-10 animate-pulse-slow"></div>
-            <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-gradient-to-br from-teal-400 to-cyan-400 opacity-10 animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
+ 
           </motion.div>
         </div>
 
