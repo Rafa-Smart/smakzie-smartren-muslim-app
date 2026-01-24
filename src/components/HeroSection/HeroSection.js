@@ -158,22 +158,7 @@ const HeroSection = () => {
                         e.target.src = `https://placehold.co/300x550/1a1a2e/ffffff?text=Tampilan+Utama+MuslimApp`;
                       }}
                     />
-                    
-                    {/* Fallback jika gambar tidak ditemukan */}
-                    {!document.querySelector('img[src="/assets/images/hero-screen.png"]') && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-                        <div className="text-center p-6">
-                          <div className={`w-20 h-20 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 flex items-center justify-center mx-auto mb-4`}>
-                            <Home className="w-10 h-10 text-white" />
-                          </div>
-                          <h3 className="text-xl font-bold text-white mb-2">Tampilan Utama MuslimApp</h3>
-                          <p className="text-gray-300 mb-4">Screenshot HP Anda akan tampil di sini</p>
-                          <div className="text-sm text-gray-400">
-                            Simpan sebagai: /assets/images/hero-screen.png
-                          </div>
-                        </div>
-                      </div>
-                    )}
+
                   </div>
                   
   
