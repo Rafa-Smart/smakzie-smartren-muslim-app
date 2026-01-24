@@ -115,7 +115,6 @@ const CTASection = () => {
                 <div className="absolute top-3 right-3">
                   <div className="flex items-center space-x-1 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 text-white text-xs font-bold">
                     <Zap className="w-3 h-3" />
-                    <span className="hidden sm:inline">{universalApk.badge}</span>
                     <span className="sm:hidden">REKOM</span>
                   </div>
                 </div>
