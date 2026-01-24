@@ -21,15 +21,7 @@ const Footer = () => {
         { label: 'Prestasi Siswa', href: '#' }
       ]
     },
-    {
-      title: 'Kontak',
-      links: [
-        { label: 'Email Sekolah', href: 'mailto:info@smkn1cianjur.sch.id' },
-        { label: 'Instagram', href: 'https://instagram.com/smkn1cianjur' },
-        { label: 'YouTube', href: '#' },
-        { label: 'Telepon', href: 'tel:+62' }
-      ]
-    }
+    
   ];
 
   const socialLinks = [
