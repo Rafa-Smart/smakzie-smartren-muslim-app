@@ -366,56 +366,7 @@ const CTASection = () => {
           )}
         </motion.div>
 
-        {/* Call to Action - Mobile Optimized */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-8"
-        >
-          <div className="bg-gradient-to-r from-emerald-600 to-green-600 rounded-2xl p-6 text-white">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <Calendar className="w-5 h-5" />
-              <span className="text-sm font-medium">Smartren 1447 H</span>
-            </div>
 
-            <h3 className="text-xl font-bold text-center mb-4">
-              Siap Sambut Smartren Ramadhan?
-            </h3>
-            <p className="text-center text-sm opacity-90 mb-6 px-4">
-              Download MuslimApp untuk mendukung kegiatan Smartren Ramadhan di SMKN 1 Cianjur.
-            </p>
-
-            {/* Jurusan Badges - Mobile Scrollable */}
-            <div className="mb-6">
-              <h4 className="text-center text-sm font-medium opacity-90 mb-3">
-                Untuk Semua Jurusan:
-              </h4>
-              <div className="flex overflow-x-auto space-x-2 pb-2 px-1">
-                {jurusan.map((item, index) => (
-                  <div
-                    key={index}
-                    className="px-3 py-2 rounded-full bg-white/20 text-white font-medium text-sm whitespace-nowrap"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Tips Instalasi Mobile */}
-            <div className="bg-white/10 rounded-xl p-4 mt-4">
-              <h4 className="font-bold text-sm mb-2">📱 Tips Instalasi:</h4>
-              <ol className="text-xs space-y-1 opacity-90">
-                <li>1. Klik tombol download di atas</li>
-                <li>2. Buka file APK dari folder Downloads</li>
-                <li>3. Izinkan instalasi dari sumber tidak dikenal</li>
-                <li>4. Tunggu hingga proses instalasi selesai</li>
-              </ol>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
