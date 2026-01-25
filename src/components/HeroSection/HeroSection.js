@@ -185,7 +185,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto relative z-10 ">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -255,7 +255,7 @@ const HeroSection = () => {
             className="relative"
           >
             {/* Phone Frame */}
-            <div className="relative left-32 phone-frame rounded-[2.5rem]  max-w-72 mx-sm border-8 border-gray-900 dark:border-gray-100 shadow-2xl">
+            <div className="relative phone-frame rounded-[2.5rem]  max-w-72 mx-sm border-8 border-gray-900 dark:border-gray-100 shadow-2xl">
               <div className="relative bg-black rounded-[2rem] overflow-hidden h-[600px]">
  
                 
@@ -272,7 +272,7 @@ const HeroSection = () => {
                       transition={{ duration: 0.5 }}
                       className={`absolute inset-0 ${currentImageIndex === index ? 'z-10' : 'z-0'}`}
                     >
-                      <div className="h-full w-full flex items-center justify-center bg-gradient-to-b from-gray-900 to-black">
+                      <div className="h-full w-full flex items-center justify-center bg-gradient-to-b from-gray-900 to-black">  
                         <div className="relative w-full h-full">
                           <img
                             src={image.image}
@@ -308,13 +308,7 @@ const HeroSection = () => {
             </div>
 
  
-            {/* Auto-play Indicator */}
-            <div className="absolute -top-2 right-4">
-              <div className="flex items-center space-x-1 px-2 py-1 rounded-full bg-black/80 backdrop-blur-sm">
-                <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-emerald-400 animate-pulse' : 'bg-gray-500'}`}></div>
-                <span className="text-xs text-gray-300">Auto</span>
-              </div>
-            </div>
+            
 
  
           </motion.div>
