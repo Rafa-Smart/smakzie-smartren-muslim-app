@@ -146,9 +146,7 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               © {new Date().getFullYear()} Smartren SMKN 1 Cianjur. Hak Cipta Dilindungi.
             </p>
-            <p className="text-gray-500 text-sm mt-2">
-              Dibuat dengan <Heart className="inline w-4 h-4 text-red-500" /> untuk siswa-siswi Smakzie
-            </p>
+ 
           </div>
 
           <div className="text-center">
