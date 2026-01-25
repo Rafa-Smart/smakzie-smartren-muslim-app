@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Youtube, Heart, Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
@@ -6,22 +7,21 @@ const Footer = () => {
     {
       title: 'Aplikasi',
       links: [
-        { label: 'Fitur Unggulan', href: '#features' },
-        { label: 'Cara Penggunaan', href: '#' },
-        { label: 'Download', href: '#cta' },
-        { label: 'Panduan', href: '#' }
+        { label: 'Fitur Unggulan', to: '/features' },
+        { label: 'Download', to: '/download' },
+        { label: 'Tentang Kami', to: '/about' },
+        { label: 'UI Showcase', to: '/ui-showcase' }
       ]
     },
     {
       title: 'Smartren',
       links: [
-        { label: 'Tentang Smartren', href: '#' },
-        { label: 'Jadwal Kegiatan', href: '#' },
-        { label: 'Kegiatan Ramadhan', href: '#' },
-        { label: 'Prestasi Siswa', href: '#' }
+        { label: 'Dashboard Interaktif', to: '/interactive' },
+        { label: 'Home', to: '/' },
+        { label: 'Kegiatan Ramadhan', to: '/features' },
+        { label: 'Tim Developer', to: '/about' }
       ]
     },
-    
   ];
 
   const socialLinks = [
@@ -46,7 +46,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-               
+                <span className="text-white font-bold text-lg">S</span>
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-white">Smartren Smakzie</h3>
@@ -97,17 +97,18 @@ const Footer = () => {
                 <ul className="space-y-3">
                   {column.links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        className="text-gray-400 hover:text-emerald-400 transition-colors text-sm"
+                      <Link
+                        to={link.to}
+                        className="text-gray-400 hover:text-emerald-400 transition-colors text-sm hover:underline"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
+  
           </div>
         </div>
 
@@ -161,15 +162,15 @@ const Footer = () => {
 
           {/* Download Button */}
           <div>
-            <a
-              href="#"
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 transition-colors text-white font-medium"
+            <Link
+              to="/download"
+              className="inline-flex items-center px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 transition-colors text-white font-medium hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
             >
               <span>Download Aplikasi</span>
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

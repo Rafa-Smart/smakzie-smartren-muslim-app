@@ -198,6 +198,15 @@ const InteractiveDemo = () => {
       icon: <Brain className="w-5 h-5" />,
       color: 'from-purple-500 to-indigo-500',
       category: 'Edukasi'
+    },
+    {
+      id: 18,
+      title: 'Papan peringkat',
+      description: 'berlomba lomba dalam kebaikan',
+      image: '/assets/images/papan-peringkat-screen.png',
+      icon: <TrendingUp className="w-5 h-5" />,
+      color: 'from-purple-500 to-indigo-500',
+      category: 'Sosial'
     }
   ];
 
@@ -521,7 +530,7 @@ const InteractiveDemo = () => {
                       <img
                         src={screens[activeScreen].image}
                         alt={screens[activeScreen].title}
-                        className="w-full h-full object-contain"
+                        className="w-full h-50 object-contain"
                         style={{ 
                           objectPosition: 'center top',
                           maxHeight: 'calc(100% - 50px)'
@@ -603,25 +612,7 @@ const InteractiveDemo = () => {
             </div>
           </div>
         </div>
-
-        {/* Legend */}
-        <div className="mt-12 p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
-          <div className="text-center mb-6">
-            <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Legenda Kategori</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Setiap kategori memiliki warna unik untuk memudahkan navigasi</p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
-            {categories.slice(1).map((cat) => (
-              <div key={cat.id} className="flex flex-col items-center text-center">
-                <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${cat.color} flex items-center justify-center mb-2`}>
-                  <div className="w-6 h-6 rounded bg-white/20"></div>
-                </div>
-                <div className="text-sm font-medium text-gray-800 dark:text-white">{cat.label}</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">{cat.count} fitur</div>
-              </div>
-            ))}
-          </div>
-        </div>
+ 
       </div>
     </section>
   );

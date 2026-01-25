@@ -7,9 +7,11 @@ import InteractiveDemo from "./components/InteractiveDemo/InteractiveDemo";
 import FeaturesSection from "./components/FeaturesSection/FeaturesSection";
 import UIShowcase from "./components/UIShowcase/UIShowcase";
 import CTASection from "./components/CTASection/CTASection";
+import AboutPage from "./components/About/About"; // Import baru
 import Footer from "./components/Footer/Footer";
 import "./styles/globals.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import FloatingDownloadButton from "./components/FloatingDownloadButton/FloatingDownloadButton";
 
 function App() {
   return (
@@ -25,7 +27,9 @@ function App() {
                 <Route path="/features" element={<FeaturesSection />} />
                 <Route path="/ui-showcase" element={<UIShowcase />} />
                 <Route path="/download" element={<CTASection />} />
+                <Route path="/about" element={<AboutPage />} />  
               </Routes>
+              <FloatingDownloadButton></FloatingDownloadButton>
             </main>
             <Footer />
           </div>

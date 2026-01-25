@@ -45,6 +45,10 @@ const Header = () => {
       label: 'Download', 
       path: '/download',
     },
+      { 
+    label: 'About',  // Menu baru
+    path: '/about',
+  },
   ];
 
   const handleThemeToggle = () => {

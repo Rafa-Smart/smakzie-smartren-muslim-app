@@ -96,7 +96,7 @@ const CTASection = () => {
       className="relative overflow-hidden py-12 px-4 sm:py-16 sm:px-6 lg:py-20 lg:px-8"
     >
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-emerald-900/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950"></div>
       
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-64 h-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-200/20 blur-3xl dark:bg-emerald-500/10"></div>
