@@ -183,7 +183,7 @@ const FeaturesSection = () => {
       const nextIndex = prev + 1;
       return nextIndex >= features.length ? 0 : nextIndex;
     });
-    setTimeout(() => setIsAutoPlaying(true), 5000);
+    setTimeout(() => setIsAutoPlaying(true), 2000);
   };
 
   const prevUpperSlide = () => {
@@ -192,7 +192,7 @@ const FeaturesSection = () => {
       const nextIndex = prev - 1;
       return nextIndex < 0 ? features.length - 1 : nextIndex;
     });
-    setTimeout(() => setIsAutoPlaying(true), 5000);
+    setTimeout(() => setIsAutoPlaying(true), 2000);
   };
 
   const nextLowerSlide = () => {
@@ -201,7 +201,7 @@ const FeaturesSection = () => {
       const nextIndex = prev + 1;
       return nextIndex >= additionalFeatures.length ? 0 : nextIndex;
     });
-    setTimeout(() => setIsAutoPlaying(true), 5000);
+    setTimeout(() => setIsAutoPlaying(true), 2000);
   };
 
   const prevLowerSlide = () => {
@@ -210,14 +210,14 @@ const FeaturesSection = () => {
       const nextIndex = prev - 1;
       return nextIndex < 0 ? additionalFeatures.length - 1 : nextIndex;
     });
-    setTimeout(() => setIsAutoPlaying(true), 5000);
+    setTimeout(() => setIsAutoPlaying(true), 2000);
   };
 
   return (
     <section id="features" className="section-padding bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 overflow-hidden">
       <div className="container mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
@@ -373,7 +373,7 @@ const FeaturesSection = () => {
                 onClick={() => {
                   setIsAutoPlaying(false);
                   setUpperActiveIndex(index);
-                  setTimeout(() => setIsAutoPlaying(true), 5000);
+                  setTimeout(() => setIsAutoPlaying(true), 2000);
                 }}
                 className={`flex-shrink-0 flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${upperActiveIndex === index ? 'bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20 border border-emerald-200 dark:border-emerald-700' : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
               >
@@ -503,7 +503,7 @@ const FeaturesSection = () => {
                   onClick={() => {
                     setIsAutoPlaying(false);
                     setLowerActiveIndex(index);
-                    setTimeout(() => setIsAutoPlaying(true), 5000);
+                    setTimeout(() => setIsAutoPlaying(true), 2000);
                   }}
                   className={`flex-shrink-0 flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${lowerActiveIndex === index ? 'bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-700' : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
                 >
