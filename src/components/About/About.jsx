@@ -35,16 +35,16 @@ const AboutPage = () => {
       role: "Fullstack Developer",
       description:
         "Spesialis dalam pengembangan aplikasi mobile dan web dengan fokus pada clean code dan best practices.",
-      skills: ["Flutter", "React Native", "Firebase", "API Dev"],
+      skills: ["Flutter", "React js", "Firebase", "supabase"],
       avatarColor: "from-purple-500 to-pink-500",
       social: {
-        github: "#",
-        instagram: "#",
-        linkedin: "#",
-        email: "haidar@smakzie.edu",
+        github: "https://github.com/mdhrarrf",
+        instagram: "@mdhrarrf",
+        linkedin: "https://www.linkedin.com/in/muhammad-haidar-almer-rafif-4aa260398/",
+        email: "haidarmeeting@gmail.com",
       },
       quote:
-        "Teknologi terbaik adalah yang bisa membantu banyak orang dengan cara sederhana.",
+        "sepintar pintarnya kalian, jangan lupa tidur!",
     },
 
     {
@@ -71,14 +71,14 @@ const AboutPage = () => {
       name: "Rafa Khadafi",
       role: "Fullstack Developer",
       description:
-        "Ahli dalam pengembangan aplikasi fullstack dengan stack modern. Fokus pada performa tinggi dan user experience yang optimal.",
+        "fullstack aja",
       skills: ["React/Next.js", "Node.js", "Flutter", "UI/UX"],
       avatarColor: "from-blue-500 to-cyan-500",
       social: {
-        github: "#",
-        instagram: "#",
+        github: "https://github.com/Rafa-Smart",
+        instagram: "rk_khadafi",
         linkedin: "#",
-        email: "rafaqadavi@smakzie.edu",
+        email: "rafaoffice@gmail.com",
       },
       quote:
         "Setiap baris kode adalah kesempatan untuk membuat sesuatu yang berguna bagi banyak orang.",
