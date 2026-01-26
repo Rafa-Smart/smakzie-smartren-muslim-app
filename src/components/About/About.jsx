@@ -39,7 +39,7 @@ const AboutPage = () => {
       avatarColor: "from-purple-500 to-pink-500",
       social: {
         github: "https://github.com/mdhrarrf",
-        instagram: "@mdhrarrf",
+        instagram: "https://www.instagram.com/mdhrarrf?igsh=MXFkdnN3bHM1cXl5aQ==",
         linkedin: "https://www.linkedin.com/in/muhammad-haidar-almer-rafif-4aa260398/",
         email: "haidarmeeting@gmail.com",
       },
@@ -60,7 +60,7 @@ const AboutPage = () => {
       avatarColor: "from-emerald-500 to-green-500",
       social: {
         github: "#",
-        instagram: "#",
+        instagram: "https://www.instagram.com/fajarms8?igsh=d2Vna2p5YXVpcHBj",
         linkedin: "#",
         email: "fajar@smakzie.edu",
       },
@@ -76,7 +76,7 @@ const AboutPage = () => {
       avatarColor: "from-blue-500 to-cyan-500",
       social: {
         github: "https://github.com/Rafa-Smart",
-        instagram: "rk_khadafi",
+        instagram: "https://www.instagram.com/r.k_khadafi?igsh=M3diaGR2YXJ1MDh4",
         linkedin: "#",
         email: "rafaoffice@gmail.com",
       },

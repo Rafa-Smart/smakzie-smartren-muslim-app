@@ -148,25 +148,25 @@ const HeroSection = () => {
   const nextDashboardSlide = () => {
     setIsAutoPlaying(false);
     setCurrentDashboardSlide((prev) => (prev + 1) % dashboardSlides.length);
-    setTimeout(() => setIsAutoPlaying(true), 1000);
+    setTimeout(() => setIsAutoPlaying(true), 500);
   };
 
   const prevDashboardSlide = () => {
     setIsAutoPlaying(false);
     setCurrentDashboardSlide((prev) => (prev - 1 + dashboardSlides.length) % dashboardSlides.length);
-    setTimeout(() => setIsAutoPlaying(true), 1000);
+    setTimeout(() => setIsAutoPlaying(true), 500);
   };
 
   const nextImage = () => {
     setIsAutoPlaying(false);
     setCurrentImageIndex((prev) => (prev + 1) % phoneImages.length);
-    setTimeout(() => setIsAutoPlaying(true), 1000);
+    setTimeout(() => setIsAutoPlaying(true), 500);
   };
 
   const prevImage = () => {
     setIsAutoPlaying(false);
     setCurrentImageIndex((prev) => (prev - 1 + phoneImages.length) % phoneImages.length);
-    setTimeout(() => setIsAutoPlaying(true), 1000);
+    setTimeout(() => setIsAutoPlaying(true), 500);
   };
 
   return (
@@ -481,7 +481,7 @@ const HeroSection = () => {
                     onClick={() => {
                       setIsAutoPlaying(false);
                       setCurrentDashboardSlide(index);
-                      setTimeout(() => setIsAutoPlaying(true), 1000);
+                      setTimeout(() => setIsAutoPlaying(true), 500);
                     }}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${currentDashboardSlide === index ? 'w-10 bg-gradient-to-r from-blue-500 to-cyan-500' : 'bg-gray-700 hover:bg-gray-600'}`}
                   />
