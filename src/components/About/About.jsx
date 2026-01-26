@@ -72,7 +72,7 @@ const AboutPage = () => {
       role: "Fullstack Developer",
       description:
         "fullstack aja",
-      skills: ["React/Next.js", "Node.js", "Flutter", "UI/UX"],
+      skills: ["React/Next.js", "Flutter", "dll"],
       avatarColor: "from-blue-500 to-cyan-500",
       social: {
         github: "https://github.com/Rafa-Smart",
