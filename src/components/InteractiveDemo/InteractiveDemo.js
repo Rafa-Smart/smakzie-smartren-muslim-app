@@ -530,7 +530,7 @@ const InteractiveDemo = () => {
                       <img
                         src={screens[activeScreen].image}
                         alt={screens[activeScreen].title}
-                        className="w-full h-50 object-contain"
+                        className="w-full h-full object-contain"
                         style={{ 
                           objectPosition: 'center top',
                           maxHeight: 'calc(100% - 50px)'
