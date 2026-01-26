@@ -59,7 +59,7 @@ const CTASection = () => {
     description:
       "Satu file APK yang kompatibel dengan semua perangkat Android. Solusi terbaik untuk semua siswa Smakzie tanpa perlu khawatir dengan spesifikasi perangkat.",
     fileSize: "~45 MB",
-    fileName: "app-release.apk",
+    fileName: "smakzie-muslim.apk",
     downloadName: "muslimapp-smakzie.apk",
     features: [
       { text: "Kompatibel dengan 99% HP Android", icon: Phone },
