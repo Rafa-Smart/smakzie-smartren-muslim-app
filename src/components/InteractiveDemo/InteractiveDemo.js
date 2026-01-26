@@ -113,7 +113,7 @@ const InteractiveDemo = () => {
       id: 8,
       title: 'Daily Kegiatan',
       description: 'Aktivitas harian Smartren',
-      image: '/assets/images/kegiatan-screen.png',
+      image: '/assets/images/daily-screen.png',
       icon: <Activity className="w-5 h-5" />,
       color: 'from-sky-500 to-blue-500',
       category: 'Kegiatan'
@@ -515,15 +515,7 @@ const InteractiveDemo = () => {
                     transition={{ duration: 0.3 }}
                     className="h-full flex flex-col"
                   >
-                    {/* Status Bar Simulation */}
-                    <div className="flex justify-between items-center px-6 pt-2 pb-1 bg-black">
-                      <div className="text-white text-xs">22:01</div>
-                      <div className="flex items-center space-x-1">
-                        <div className="w-4 h-2 bg-gray-600 rounded-sm"></div>
-                        <div className="w-3 h-3 rounded-full border border-gray-500"></div>
-                        <div className="w-6 h-2 bg-gray-600 rounded-sm"></div>
-                      </div>
-                    </div>
+ 
                     
                     {/* Screen Image */}
                     <div className="flex-1 relative overflow-hidden">
