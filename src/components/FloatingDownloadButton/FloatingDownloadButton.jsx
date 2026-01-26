@@ -77,7 +77,7 @@ const FloatingDownloadButton = () => {
 
   // Handle download universal APK
   const handleDownloadUniversal = () => {
-    downloadAPK('app-release.apk', 'muslimapp-smakzie-universal.apk');
+    downloadAPK('smakzie-muslim.apk', 'muslimapp-smakzie.apk');
   };
 
   // Navigate ke halaman download untuk melihat semua versi
