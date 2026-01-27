@@ -19,23 +19,42 @@ const HeroSection = () => {
   const [currentDashboardSlide, setCurrentDashboardSlide] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [imageError, setImageError] = useState(false);
   const navigate = useNavigate();
 
-  // Gambar mockup HP - gunakan path absolut yang benar
+  // Gunakan path yang benar untuk gambar
   const phoneImages = [
     {
       id: 1,
       title: "Dashboard Utama",
       description: "Tampilan utama aplikasi dengan fitur lengkap",
-      image: "/assets/images/dashboard-siswa.png", // Pastikan file ini ada di public/assets/images/
+      image: "/assets/images/dashboard-siswa.png",
     },
     {
       id: 2,
       title: "Dashboard Guru",
       description: "Tampilan dashboard untuk guru/pembina",
-      image: "/assets/images/dashboard-guru.png", // Pastikan file ini ada di public/assets/images/
+      image: "/assets/images/dashboard-guru.png",
     },
   ];
+
+  // Periksa apakah gambar ada
+  useEffect(() => {
+    const checkImage = async (url) => {
+      try {
+        const response = await fetch(url);
+        return response.ok;
+      } catch (error) {
+        console.error("Error checking image:", error);
+        return false;
+      }
+    };
+
+    phoneImages.forEach(async (img) => {
+      const exists = await checkImage(img.image);
+      console.log(`Image ${img.image} exists:`, exists);
+    });
+  }, []);
 
   const dashboardSlides = [
     {
@@ -116,7 +135,7 @@ const HeroSection = () => {
     };
   }, [isAutoPlaying, dashboardSlides.length]);
 
-  // Auto-play untuk gambar HP (berganti setiap 4 detik)
+  // Auto-play untuk gambar HP
   useEffect(() => {
     let interval;
     if (isAutoPlaying) {
@@ -159,6 +178,15 @@ const HeroSection = () => {
       (prev) => (prev - 1 + phoneImages.length) % phoneImages.length,
     );
     setTimeout(() => setIsAutoPlaying(true), 500);
+  };
+
+  const handleImageError = (e) => {
+    console.error("Failed to load image:", e.target.src);
+    setImageError(true);
+    // Fallback ke placeholder
+    e.target.src = `https://via.placeholder.com/300x600/1a1a2e/ffffff?text=${encodeURIComponent(
+      phoneImages[currentImageIndex]?.title || "App Preview"
+    )}`;
   };
 
   return (
@@ -260,17 +288,22 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Right - Gambar Mockup HP yang Sudah Jadi */}
+          {/* Right - Gambar Mockup HP */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            {/* Container untuk gambar mockup HP */}
             <div className="relative w-full max-w-xs mx-auto">
-              {/* Gambar Mockup HP */}
-              <div className="relative rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+              {/* Container gambar dengan ukuran tetap */}
+              <div className="relative rounded-lg overflow-hidden  "
+                style={{ 
+                  width: "300px", 
+                  height: "600px",
+                  margin: "0 auto"
+                }}>
+                
                 {phoneImages.map((image, index) => (
                   <motion.div
                     key={image.id}
@@ -280,27 +313,37 @@ const HeroSection = () => {
                       scale: currentImageIndex === index ? 1 : 0.95,
                     }}
                     transition={{ duration: 0.5 }}
-                    className={`absolute inset-0 ${currentImageIndex === index ? "z-10" : "z-0"}`}
+                    className={`absolute inset-0 flex items-center justify-center ${currentImageIndex === index ? "z-10" : "z-0"}`}
                   >
-                    <img
-                      src={image.image}
-                      alt={image.title}
-                      className="w-full h-auto rounded-lg"
-                      style={{
-                        minHeight: "400px",
-                        objectFit: "contain",
-                        background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)"
-                      }}
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        // Fallback jika gambar tidak ditemukan
-                        e.target.src = `https://via.placeholder.com/300x600/1a1a2e/ffffff?text=${encodeURIComponent(image.title)}`;
-                        e.target.alt = `Placeholder: ${image.title}`;
-                        console.log(`Gambar ${image.image} tidak ditemukan, menggunakan placeholder`);
-                      }}
-                    />
+                    {currentImageIndex === index && (
+                      <img
+                        src={image.image}
+                        alt={image.title}
+                        className="w-full h-full object-contain p-2"
+                        onError={handleImageError}
+                        onLoad={() => {
+                          console.log("Image loaded successfully:", image.image);
+                          setImageError(false);
+                        }}
+                      />
+                    )}
                   </motion.div>
                 ))}
+                
+                {/* Placeholder jika semua gambar error */}
+                {imageError && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+                    <div className="text-4xl mb-2">📱</div>
+                    <div className="text-center">
+                      <h3 className="font-bold text-gray-800 dark:text-white mb-1">
+                        {phoneImages[currentImageIndex]?.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        {phoneImages[currentImageIndex]?.description}
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Kontrol navigasi gambar */}
