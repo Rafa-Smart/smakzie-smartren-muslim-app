@@ -238,7 +238,7 @@ const InteractiveDemo = () => {
       icon: <TrendingUp className="w-5 h-5" />,
       color: 'from-purple-500 to-indigo-500',
       category: 'Sosial',
-      mockupImage: '/assets/images/monitoring-siswa-screen.png'
+      mockupImage: '/assets/images/monitoring-siswa.png'
     }
   ];
 
