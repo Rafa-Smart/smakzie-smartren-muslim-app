@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ChevronLeft, 
@@ -10,13 +10,11 @@ import {
   Compass, 
   Moon, 
   Calendar, 
-  Users, 
   BookOpen, 
   Repeat, 
   Mic, 
   Home, 
   Activity, 
-  GraduationCap, 
   CheckCircle, 
   TrendingUp, 
   DollarSign,
@@ -33,8 +31,13 @@ const InteractiveDemo = () => {
   const [activeScreen, setActiveScreen] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('Semua');
   const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  const [viewMode, setViewMode] = useState('grid');
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [transitionDirection, setTransitionDirection] = useState('next');
   
+  const autoPlayIntervalRef = useRef(null);
+  const autoPlayDuration = 3000; // 3 detik per slide
+
   // Semua fitur yang diminta
   const screens = [
     {
@@ -45,7 +48,7 @@ const InteractiveDemo = () => {
       icon: <Book className="w-5 h-5" />,
       color: 'from-emerald-500 to-green-500',
       category: 'Ibadah',
-      mockupImage: '/assets/images/al-quran-screen.png' // Tambahkan path ke mockup gambar
+      mockupImage: '/assets/images/al-quran-screen.png'
     },
     {
       id: 1,
@@ -155,7 +158,7 @@ const InteractiveDemo = () => {
       icon: <BookOpen className="w-5 h-5" />,
       color: 'from-amber-500 to-yellow-500',
       category: 'Ibadah',
-      mockupImage: '/assets/images/ngaji-screen.pngup.png'
+      mockupImage: '/assets/images/ngaji-screen.png'
     },
     {
       id: 12,
@@ -231,11 +234,11 @@ const InteractiveDemo = () => {
       id: 19,
       title: 'monitoring siswa',
       description: 'monotoring aktivitas siswa selama di smartren',
-      image: '/assets/images/papan-peringkat-screen.png',
+      image: '/assets/images/monitoring-siswa-screen.png',
       icon: <TrendingUp className="w-5 h-5" />,
       color: 'from-purple-500 to-indigo-500',
       category: 'Sosial',
-      mockupImage: '/assets/images/papan-peringkat-screen.png'
+      mockupImage: '/assets/images/monitoring-siswa-screen.png'
     }
   ];
 
@@ -258,6 +261,45 @@ const InteractiveDemo = () => {
                          screen.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  // Fungsi untuk berpindah ke slide berikutnya
+  const nextSlide = () => {
+    setTransitionDirection('next');
+    setActiveScreen(prev => (prev + 1) % screens.length);
+  };
+
+  // Fungsi untuk berpindah ke slide sebelumnya
+  const prevSlide = () => {
+    setTransitionDirection('prev');
+    setActiveScreen(prev => (prev - 1 + screens.length) % screens.length);
+  };
+
+  // Auto-play effect
+  useEffect(() => {
+    if (isAutoPlaying) {
+      autoPlayIntervalRef.current = setInterval(() => {
+        nextSlide();
+      }, autoPlayDuration);
+    }
+
+    return () => {
+      if (autoPlayIntervalRef.current) {
+        clearInterval(autoPlayIntervalRef.current);
+      }
+    };
+  }, [isAutoPlaying]);
+
+  // Fungsi untuk handle klik pada item fitur
+  const handleFeatureClick = (id) => {
+    // Pause auto-play sementara
+    setIsAutoPlaying(false);
+    setActiveScreen(id);
+    
+    // Resume auto-play setelah 5 detik
+    setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 5000);
+  };
 
   return (
     <section id="demo" className="section-padding bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
@@ -306,7 +348,7 @@ const InteractiveDemo = () => {
             </div>
 
             {/* Search and Controls */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 {/* Search Input */}
                 <div className="flex-1 relative">
@@ -324,13 +366,13 @@ const InteractiveDemo = () => {
                 <div className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 rounded-xl p-1">
                   <button
                     onClick={() => setViewMode('grid')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white dark:bg-gray-800 shadow-sm' : 'hover:bg-gray-100 dark:hover:bg-gray-600'}`}
+                    className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white dark:bg-gray-800' : 'hover:bg-gray-100 dark:hover:bg-gray-600'}`}
                   >
                     <Grid className={`w-5 h-5 ${viewMode === 'grid' ? 'text-primary-600 dark:text-primary-400' : 'text-gray-400'}`} />
                   </button>
                   <button
                     onClick={() => setViewMode('list')}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white dark:bg-gray-800 shadow-sm' : 'hover:bg-gray-100 dark:hover:bg-gray-600'}`}
+                    className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white dark:bg-gray-800' : 'hover:bg-gray-100 dark:hover:bg-gray-600'}`}
                   >
                     <List className={`w-5 h-5 ${viewMode === 'list' ? 'text-primary-600 dark:text-primary-400' : 'text-gray-400'}`} />
                   </button>
@@ -350,7 +392,7 @@ const InteractiveDemo = () => {
                       onClick={() => setSelectedCategory(cat.id === 'semua' ? 'Semua' : cat.label)}
                       className={`group relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                         (selectedCategory === cat.label || (cat.id === 'semua' && selectedCategory === 'Semua'))
-                          ? `bg-gradient-to-r ${cat.color} text-white shadow-lg`
+                          ? `bg-gradient-to-r ${cat.color} text-white`
                           : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                       }`}
                     >
@@ -375,12 +417,12 @@ const InteractiveDemo = () => {
                   {filteredScreens.map((screen) => (
                     <motion.button
                       key={screen.id}
-                      onClick={() => setActiveScreen(screen.id)}
+                      onClick={() => handleFeatureClick(screen.id)}
                       whileHover={{ y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all relative overflow-hidden group ${
                         activeScreen === screen.id
-                          ? `border-gradient bg-gradient-to-br ${screen.color} text-white shadow-2xl`
+                          ? `border-gradient bg-gradient-to-br ${screen.color} text-white`
                           : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-primary-500 dark:hover:border-primary-500'
                       }`}
                     >
@@ -414,11 +456,11 @@ const InteractiveDemo = () => {
                   {filteredScreens.map((screen) => (
                     <motion.button
                       key={screen.id}
-                      onClick={() => setActiveScreen(screen.id)}
+                      onClick={() => handleFeatureClick(screen.id)}
                       whileHover={{ x: 4 }}
                       className={`flex items-center p-3 rounded-xl border transition-all ${
                         activeScreen === screen.id
-                          ? `border-gradient bg-gradient-to-r ${screen.color} text-white shadow-lg`
+                          ? `border-gradient bg-gradient-to-r ${screen.color} text-white`
                           : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-primary-500 dark:hover:border-primary-500'
                       }`}
                     >
@@ -457,7 +499,7 @@ const InteractiveDemo = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <button
-                      onClick={() => setActiveScreen(prev => prev > 0 ? prev - 1 : screens.length - 1)}
+                      onClick={prevSlide}
                       className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                       disabled={filteredScreens.length === 0}
                     >
@@ -467,7 +509,7 @@ const InteractiveDemo = () => {
                       {activeScreen + 1} / {screens.length}
                     </span>
                     <button
-                      onClick={() => setActiveScreen(prev => prev < screens.length - 1 ? prev + 1 : 0)}
+                      onClick={nextSlide}
                       className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                       disabled={filteredScreens.length === 0}
                     >
@@ -485,7 +527,7 @@ const InteractiveDemo = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="bg-gradient-to-r from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg p-6"
+                className="bg-gradient-to-r from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-700"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
@@ -525,90 +567,97 @@ const InteractiveDemo = () => {
             </AnimatePresence>
           </div>
 
-          {/* Right Panel - Gambar Mockup HP */}
+          {/* Right Panel - Gambar Mockup HP dengan Auto-play */}
           <div className="relative lg:sticky lg:top-24">
             {/* Container untuk gambar mockup */}
             <div className="flex items-center justify-center h-full">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeScreen}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative w-full max-w-xs mx-auto"
-                >
-                  {/* Gambar Mockup HP - langsung tampilkan gambar mockup yang sudah jadi */}
-                  <img
-                    src={screens[activeScreen].mockupImage || screens[activeScreen].image}
-                    alt={`Mockup ${screens[activeScreen].title}`}
-                    className="w-full h-full rounded-lg "
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      // Fallback ke gambar placeholder jika mockup tidak ada
-                      e.target.src = `https://placehold.co/300x600/1a1a2e/ffffff?text=${encodeURIComponent(screens[activeScreen].title + ' Mockup')}`;
-                    }}
-                  />
-                  
-                  {/* Overlay untuk informasi jika gambar tidak ditemukan */}
-                  {!screens[activeScreen].mockupImage && !screens[activeScreen].image && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black rounded-lg">
-                      <div className="text-center p-6">
-                        <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${screens[activeScreen].color} flex items-center justify-center mx-auto mb-4`}>
-                          {React.cloneElement(screens[activeScreen].icon, { className: 'w-10 h-10 text-white' })}
+              <div className="relative w-full max-w-xs mx-auto">
+                {/* Gambar Mockup HP dengan Animasi Smooth */}
+                <div className="relative overflow-hidden rounded-xl">
+                  <AnimatePresence mode="wait" custom={transitionDirection}>
+                    <motion.div
+                      key={activeScreen}
+                      custom={transitionDirection}
+                      initial={{ 
+                        opacity: 0,
+                        scale: 0.95
+                      }}
+                      animate={{ 
+                        opacity: 1,
+                        scale: 1
+                      }}
+                      exit={{ 
+                        opacity: 0,
+                        scale: 0.95
+                      }}
+                      transition={{ 
+                        duration: 0.4,
+                        ease: "easeInOut"
+                      }}
+                      className="relative"
+                    >
+                      <img
+                        src={screens[activeScreen].mockupImage || screens[activeScreen].image}
+                        alt={`Mockup ${screens[activeScreen].title}`}
+                        className="w-full h-full rounded-xl"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          // Fallback ke gambar placeholder jika mockup tidak ada
+                          e.target.src = `https://placehold.co/300x600/1a1a2e/ffffff?text=${encodeURIComponent(screens[activeScreen].title + ' Mockup')}`;
+                        }}
+                      />
+                      
+                      {/* Overlay untuk informasi jika gambar tidak ditemukan */}
+                      {!screens[activeScreen].mockupImage && !screens[activeScreen].image && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black rounded-xl">
+                          <div className="text-center p-6">
+                            <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${screens[activeScreen].color} flex items-center justify-center mx-auto mb-4`}>
+                              {React.cloneElement(screens[activeScreen].icon, { className: 'w-10 h-10 text-white' })}
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">{screens[activeScreen].title}</h3>
+                            <p className="text-gray-300 mb-4">{screens[activeScreen].description}</p>
+                            <div className="text-sm text-gray-400">
+                              Mockup akan muncul di sini
+                            </div>
+                          </div>
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-2">{screens[activeScreen].title}</h3>
-                        <p className="text-gray-300 mb-4">{screens[activeScreen].description}</p>
-                        <div className="text-sm text-gray-400">
-                          Mockup akan muncul di sini
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-              </AnimatePresence>
-            </div>
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
 
-            {/* Quick Controls */}
-            <div className="mt-6 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <div className="text-sm font-medium text-gray-800 dark:text-white">Kontrol Cepat</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Navigasi fitur</div>
-                </div>
-                <div className="flex items-center space-x-2">
+                {/* Simple Navigation Controls */}
+                <div className="flex justify-center mt-4 space-x-3">
                   <button
-                    onClick={() => setActiveScreen(prev => prev > 0 ? prev - 1 : screens.length - 1)}
-                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                    onClick={prevSlide}
+                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                   >
-                    <ChevronLeft className="w-5 h-5 text-gray-800 dark:text-white" />
+                    <ChevronLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
                   </button>
+                  
+                  {/* Simple Indicator */}
+                  <div className="flex items-center space-x-1">
+                    {screens.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => {
+                          setIsAutoPlaying(false);
+                          setActiveScreen(index);
+                          setTimeout(() => setIsAutoPlaying(true), 5000);
+                        }}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          activeScreen === index ? 'bg-primary-500 w-6' : 'bg-gray-300 dark:bg-gray-600'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  
                   <button
-                    onClick={() => setActiveScreen(prev => prev < screens.length - 1 ? prev + 1 : 0)}
-                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                    onClick={nextSlide}
+                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                   >
-                    <ChevronRight className="w-5 h-5 text-gray-800 dark:text-white" />
+                    <ChevronRight className="w-5 h-5 text-gray-700 dark:text-gray-300" />
                   </button>
-                </div>
-              </div>
-              
-              {/* Progress Bar */}
-              <div className="space-y-2">
-                <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400">
-                  <span>Progress</span>
-                  <span>{Math.round(((activeScreen + 1) / screens.length) * 100)}%</span>
-                </div>
-                <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: `${((activeScreen + 1) / screens.length) * 100}%` }}
-                    transition={{ duration: 0.3 }}
-                    className="h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full"
-                  ></motion.div>
-                </div>
-                <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
-                  <span>Fitur {activeScreen + 1}</span>
-                  <span>dari {screens.length}</span>
                 </div>
               </div>
             </div>
