@@ -54,7 +54,7 @@ const FloatingDownloadButton = () => {
     
     // Buat element link untuk download
     const link = document.createElement('a');
-    link.href = `/apk/${filename}`;
+    link.href = `https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v1.0.0/app-release.apk`;
     link.download = downloadName;
     link.target = '_blank';
     
