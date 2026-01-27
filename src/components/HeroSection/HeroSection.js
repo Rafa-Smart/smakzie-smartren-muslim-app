@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   School,
   Users,
@@ -43,14 +43,7 @@ const HeroSection = () => {
       badge: "Guru",
       color: "blue"
     },
-    {
-      id: 3,
-      title: "Dashboard Admin",
-      description: "Administrasi sistem lengkap",
-      image: "/assets/images/dashboard-siswa.png", // Ganti dengan gambar admin jika ada
-      badge: "Admin",
-      color: "purple"
-    }
+ 
   ];
 
   const dashboardSlides = [
@@ -189,7 +182,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+    <section className="relative overflow-hidden py-16 md:py-24">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -286,12 +279,12 @@ const HeroSection = () => {
             <div className="relative mx-auto max-w-xs">
               {/* Phone Frame */}
               <div 
-                className="relative rounded-[2rem] overflow-hidden bg-gradient-to-b from-gray-900 to-black shadow-xl border-8 border-gray-900"
+                className="relative rounded-[2rem] overflow-hidden "
                 onMouseEnter={() => setIsHoveringImage(true)}
                 onMouseLeave={() => setIsHoveringImage(false)}
               >
                 {/* Notch */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-gray-900 rounded-b-2xl z-20"></div>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-6  "></div>
                 
                 {/* Screen Content */}
                 <div className="pt-6 pb-8 px-2">
@@ -320,11 +313,7 @@ const HeroSection = () => {
                           </span>
                         </div>
                         
-                        {/* App Info Overlay */}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                          <h3 className="text-white font-bold text-sm">{appScreens[currentImageIndex].title}</h3>
-                          <p className="text-gray-300 text-xs mt-1">{appScreens[currentImageIndex].description}</p>
-                        </div>
+        
                       </div>
                     </motion.div>
                   </AnimatePresence>
@@ -385,96 +374,89 @@ const HeroSection = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="mt-24"
         >
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-600 dark:text-blue-400 mb-4">
-              <BarChart className="w-4 h-4" />
-              <span className="text-sm font-medium">Multi-Dashboard System</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Dashboard Sesuai Peran Anda
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Setiap peran mendapatkan pengalaman yang disesuaikan dengan kebutuhan
-            </p>
-          </div>
+          
 
           {/* Carousel */}
           <div className="relative">
+          
             <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 shadow-lg">
-              {dashboardSlides.map((slide, index) => (
-                <motion.div
-                  key={slide.id}
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ 
-                    opacity: index === currentDashboardSlide ? 1 : 0,
-                    x: index === currentDashboardSlide ? 0 : 100 
-                  }}
-                  exit={{ opacity: 0, x: -100 }}
-                  transition={{ duration: 0.5 }}
-                  className={`absolute inset-0 p-8 lg:p-12 ${index === currentDashboardSlide ? 'relative' : 'absolute'}`}
-                >
-                  <div className="grid lg:grid-cols-2 gap-8 items-center">
-                    {/* Content */}
-                    <div className="space-y-6">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${slide.color} flex items-center justify-center`}>
-                          <slide.icon className="w-6 h-6 text-white" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium text-gray-500 dark:text-gray-400">{slide.subtitle}</div>
-                          <div className="text-xl font-bold text-gray-900 dark:text-white">{slide.adminType}</div>
-                        </div>
-                      </div>
-
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">
-                        {slide.title}
-                      </h3>
-
-                      <p className="text-gray-600 dark:text-gray-300">
-                        {slide.description}
-                      </p>
-
-                      <div className="grid grid-cols-2 gap-3">
-                        {slide.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-                            <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Stats Preview */}
-                    <div className="bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
-                      <div className="grid grid-cols-3 gap-4 mb-6">
-                        {slide.stats.map((stat, idx) => (
-                          <div key={idx} className="text-center p-3 bg-white dark:bg-gray-800 rounded-lg">
-                            <div className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</div>
-                            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stat.label}</div>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      {/* Mini Chart */}
-                      <div className="h-32 bg-gradient-to-r from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl p-4">
-                        <div className="flex items-end justify-between h-full gap-1">
-                          {[65, 80, 45, 90, 70, 85, 60].map((height, idx) => (
-                            <div key={idx} className="flex-1 flex flex-col items-center">
-                              <div
-                                className={`w-3 rounded-t-lg ${idx === 3 ? 'bg-gradient-to-t from-emerald-500 to-green-400' : 'bg-gray-300 dark:bg-gray-600'}`}
-                                style={{ height: `${height}%` }}
-                              />
-                              <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                {['S', 'S', 'R', 'K', 'J', 'S', 'M'][idx]}
-                              </div>
+              <AnimatePresence mode="wait">
+                {dashboardSlides.map((slide, index) => {
+                  if (index !== currentDashboardSlide) return null;
+                  
+                  return (
+                    <motion.div
+                      key={slide.id}
+                      initial={{ opacity: 0, x: 100 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -100 }}
+                      transition={{ duration: 0.5 }}
+                      className="p-8 lg:p-12"
+                    >
+                      <div className="grid lg:grid-cols-2 gap-8 items-center">
+                        {/* Content */}
+                        <div className="space-y-6">
+                          <div className="flex items-center gap-3">
+                            <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${slide.color} flex items-center justify-center`}>
+                              <slide.icon className="w-6 h-6 text-white" />
                             </div>
-                          ))}
+                            <div>
+                              <div className="text-sm font-medium text-gray-500 dark:text-gray-400">{slide.subtitle}</div>
+                              <div className="text-xl font-bold text-gray-900 dark:text-white">{slide.adminType}</div>
+                            </div>
+                          </div>
+
+                          <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">
+                            {slide.title}
+                          </h3>
+
+                          <p className="text-gray-600 dark:text-gray-300">
+                            {slide.description}
+                          </p>
+
+                          <div className="grid grid-cols-2 gap-3">
+                            {slide.features.map((feature, idx) => (
+                              <div key={idx} className="flex items-center gap-2">
+                                <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                                <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Stats Preview */}
+                        <div className="bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                          <div className="grid grid-cols-3 gap-4 mb-6">
+                            {slide.stats.map((stat, idx) => (
+                              <div key={idx} className="text-center p-3 bg-white dark:bg-gray-800 rounded-lg">
+                                <div className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</div>
+                                <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stat.label}</div>
+                              </div>
+                            ))}
+                          </div>
+                          
+                          {/* Mini Chart */}
+                          <div className="h-32 bg-gradient-to-r from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl p-4">
+                            <div className="flex items-end justify-between h-full gap-1">
+                              {[65, 80, 45, 90, 70, 85, 60].map((height, idx) => (
+                                <div key={idx} className="flex-1 flex flex-col items-center">
+                                  <div
+                                    className={`w-3 rounded-t-lg ${idx === 3 ? 'bg-gradient-to-t from-emerald-500 to-green-400' : 'bg-gray-300 dark:bg-gray-600'}`}
+                                    style={{ height: `${height}%` }}
+                                  />
+                                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                    {['S', 'S', 'R', 'K', 'J', 'S', 'M'][idx]}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
             </div>
 
             {/* Carousel Controls */}
