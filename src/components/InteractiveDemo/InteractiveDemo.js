@@ -44,7 +44,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/al-quran-screen.png',
       icon: <Book className="w-5 h-5" />,
       color: 'from-emerald-500 to-green-500',
-      category: 'Ibadah'
+      category: 'Ibadah',
+      mockupImage: '/assets/images/al-quran-screen.png' // Tambahkan path ke mockup gambar
     },
     {
       id: 1,
@@ -53,7 +54,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/sholat-screen.png',
       icon: <Clock className="w-5 h-5" />,
       color: 'from-blue-500 to-cyan-500',
-      category: 'Ibadah'
+      category: 'Ibadah',
+      mockupImage: '/assets/images/sholat-screen.png'
     },
     {
       id: 2,
@@ -62,7 +64,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/doa-screen.png',
       icon: <Heart className="w-5 h-5" />,
       color: 'from-purple-500 to-pink-500',
-      category: 'Ibadah'
+      category: 'Ibadah',
+      mockupImage: '/assets/images/doa-screen.png'
     },
     {
       id: 3,
@@ -71,7 +74,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/qiblat-screen.png',
       icon: <Compass className="w-5 h-5" />,
       color: 'from-amber-500 to-orange-500',
-      category: 'Ibadah'
+      category: 'Ibadah',
+      mockupImage: '/assets/images/qiblat-screen.png'
     },
     {
       id: 4,
@@ -80,7 +84,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/tidur-screen.png',
       icon: <Moon className="w-5 h-5" />,
       color: 'from-indigo-500 to-purple-500',
-      category: 'Kesehatan'
+      category: 'Kesehatan',
+      mockupImage: '/assets/images/tidur-screen.png'
     },
     {
       id: 5,
@@ -89,7 +94,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/calender-screen.png',
       icon: <Calendar className="w-5 h-5" />,
       color: 'from-teal-500 to-emerald-500',
-      category: 'Kegiatan'
+      category: 'Kegiatan',
+      mockupImage: '/assets/images/calender-screen.png'
     },
     {
       id: 6,
@@ -98,7 +104,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/smartren2026-screen.png',
       icon: <Target className="w-5 h-5" />,
       color: 'from-rose-500 to-pink-500',
-      category: 'Kegiatan'
+      category: 'Kegiatan',
+      mockupImage: '/assets/images/smartren2026-screen.png'
     },
     {
       id: 7,
@@ -107,7 +114,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/absensi-screen.png',
       icon: <UserCheck className="w-5 h-5" />,
       color: 'from-red-500 to-rose-500',
-      category: 'Administrasi'
+      category: 'Administrasi',
+      mockupImage: '/assets/images/absensi-screen.png'
     },
     {
       id: 8,
@@ -116,7 +124,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/daily-screen.png',
       icon: <Activity className="w-5 h-5" />,
       color: 'from-sky-500 to-blue-500',
-      category: 'Kegiatan'
+      category: 'Kegiatan',
+      mockupImage: '/assets/images/daily-screen.png'
     },
     {
       id: 9,
@@ -125,7 +134,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/puasa-screen.png',
       icon: <CheckCircle className="w-5 h-5" />,
       color: 'from-lime-500 to-emerald-500',
-      category: 'Laporan'
+      category: 'Laporan',
+      mockupImage: '/assets/images/puasa-screen.png'
     },
     {
       id: 10,
@@ -134,7 +144,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/laporan-sholat-screen.png',
       icon: <TrendingUp className="w-5 h-5" />,
       color: 'from-violet-500 to-purple-500',
-      category: 'Laporan'
+      category: 'Laporan',
+      mockupImage: '/assets/images/laporan-sholat-screen.png'
     },
     {
       id: 11,
@@ -143,7 +154,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/ngaji-screen.png',
       icon: <BookOpen className="w-5 h-5" />,
       color: 'from-amber-500 to-yellow-500',
-      category: 'Ibadah'
+      category: 'Ibadah',
+      mockupImage: '/assets/images/ngaji-screen.pngup.png'
     },
     {
       id: 12,
@@ -152,7 +164,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/hafalan-screen.png',
       icon: <Repeat className="w-5 h-5" />,
       color: 'from-orange-500 to-red-500',
-      category: 'Ibadah'
+      category: 'Ibadah',
+      mockupImage: '/assets/images/hafalan-screen.png'
     },
     {
       id: 13,
@@ -161,7 +174,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/laporan-ceramah-screen.png',
       icon: <Mic className="w-5 h-5" />,
       color: 'from-fuchsia-500 to-pink-500',
-      category: 'Edukasi'
+      category: 'Edukasi',
+      mockupImage: '/assets/images/laporan-ceramah-screen.png'
     },
     {
       id: 14,
@@ -170,7 +184,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/infaq-screen.png',
       icon: <DollarSign className="w-5 h-5" />,
       color: 'from-green-500 to-teal-500',
-      category: 'Sosial'
+      category: 'Sosial',
+      mockupImage: '/assets/images/infaq-screen.png'
     },
     {
       id: 15,
@@ -179,7 +194,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/bantu-ortu-screen.png',
       icon: <Home className="w-5 h-5" />,
       color: 'from-cyan-500 to-blue-500',
-      category: 'Sosial'
+      category: 'Sosial',
+      mockupImage: '/assets/images/bantu-ortu-screen.png'
     },
     {
       id: 16,
@@ -188,7 +204,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/olahraga-screen.png',
       icon: <Dumbbell className="w-5 h-5" />,
       color: 'from-red-500 to-orange-500',
-      category: 'Kesehatan'
+      category: 'Kesehatan',
+      mockupImage: '/assets/images/olahraga-screen.png'
     },
     {
       id: 17,
@@ -197,7 +214,8 @@ const InteractiveDemo = () => {
       image: '/assets/images/belajar-screen.png',
       icon: <Brain className="w-5 h-5" />,
       color: 'from-purple-500 to-indigo-500',
-      category: 'Edukasi'
+      category: 'Edukasi',
+      mockupImage: '/assets/images/belajar-screen.png'
     },
     {
       id: 18,
@@ -206,7 +224,18 @@ const InteractiveDemo = () => {
       image: '/assets/images/papan-peringkat-screen.png',
       icon: <TrendingUp className="w-5 h-5" />,
       color: 'from-purple-500 to-indigo-500',
-      category: 'Sosial'
+      category: 'Sosial',
+      mockupImage: '/assets/images/papan-peringkat-screen.png'
+    },
+    {
+      id: 19,
+      title: 'monitoring siswa',
+      description: 'monotoring aktivitas siswa selama di smartren',
+      image: '/assets/images/papan-peringkat-screen.png',
+      icon: <TrendingUp className="w-5 h-5" />,
+      color: 'from-purple-500 to-indigo-500',
+      category: 'Sosial',
+      mockupImage: '/assets/images/papan-peringkat-screen.png'
     }
   ];
 
@@ -274,7 +303,6 @@ const InteractiveDemo = () => {
                 <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">8</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Kategori</div>
               </motion.div>
- 
             </div>
 
             {/* Search and Controls */}
@@ -378,8 +406,6 @@ const InteractiveDemo = () => {
                       }`}>
                         {screen.title}
                       </span>
-                      
-   
                     </motion.button>
                   ))}
                 </div>
@@ -499,64 +525,48 @@ const InteractiveDemo = () => {
             </AnimatePresence>
           </div>
 
-          {/* Right Panel - Phone Mockup (Tetap sama) */}
+          {/* Right Panel - Gambar Mockup HP */}
           <div className="relative lg:sticky lg:top-24">
-            {/* Phone Frame */}
-            <div className="phone-frame rounded-[2.5rem] max-w-sm mx-auto border-8 border-gray-900 dark:border-gray-100 shadow-2xl">
-              
-              {/* Dynamic Screen Content */}
-              <div className="relative bg-black rounded-[2rem] overflow-hidden h-full">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeScreen}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="h-full flex flex-col"
-                  >
- 
-                    
-                    {/* Screen Image */}
-                    <div className="flex-1 relative overflow-hidden">
-                      <img
-                        src={screens[activeScreen].image}
-                        alt={screens[activeScreen].title}
-                        className="w-full h-full object-contain"
-                        style={{ 
-                          objectPosition: 'center top',
-                          maxHeight: 'calc(100% - 50px)'
-                        }}
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = `https://placehold.co/300x550/1a1a2e/ffffff?text=${encodeURIComponent(screens[activeScreen].title)}`;
-                        }}
-                      />
-                      
-                      {/* Fallback jika gambar tidak ditemukan */}
-                      {!screens[activeScreen].image.startsWith('/assets/images/') && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-                          <div className="text-center p-6">
-                            <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${screens[activeScreen].color} flex items-center justify-center mx-auto mb-4`}>
-                              {React.cloneElement(screens[activeScreen].icon, { className: 'w-10 h-10 text-white' })}
-                            </div>
-                            <h3 className="text-xl font-bold text-white mb-2">{screens[activeScreen].title}</h3>
-                            <p className="text-gray-300 mb-4">{screens[activeScreen].description}</p>
-                            <div className="text-sm text-gray-400">
-                              Screenshot akan muncul di sini
-                            </div>
-                          </div>
+            {/* Container untuk gambar mockup */}
+            <div className="flex items-center justify-center h-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeScreen}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative w-full max-w-xs mx-auto"
+                >
+                  {/* Gambar Mockup HP - langsung tampilkan gambar mockup yang sudah jadi */}
+                  <img
+                    src={screens[activeScreen].mockupImage || screens[activeScreen].image}
+                    alt={`Mockup ${screens[activeScreen].title}`}
+                    className="w-full h-full rounded-lg "
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      // Fallback ke gambar placeholder jika mockup tidak ada
+                      e.target.src = `https://placehold.co/300x600/1a1a2e/ffffff?text=${encodeURIComponent(screens[activeScreen].title + ' Mockup')}`;
+                    }}
+                  />
+                  
+                  {/* Overlay untuk informasi jika gambar tidak ditemukan */}
+                  {!screens[activeScreen].mockupImage && !screens[activeScreen].image && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black rounded-lg">
+                      <div className="text-center p-6">
+                        <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${screens[activeScreen].color} flex items-center justify-center mx-auto mb-4`}>
+                          {React.cloneElement(screens[activeScreen].icon, { className: 'w-10 h-10 text-white' })}
                         </div>
-                      )}
+                        <h3 className="text-xl font-bold text-white mb-2">{screens[activeScreen].title}</h3>
+                        <p className="text-gray-300 mb-4">{screens[activeScreen].description}</p>
+                        <div className="text-sm text-gray-400">
+                          Mockup akan muncul di sini
+                        </div>
+                      </div>
                     </div>
-                    
-
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-              
-              {/* Home Indicator */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gray-900/30 dark:bg-gray-100/30 rounded-full"></div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Quick Controls */}
@@ -604,7 +614,6 @@ const InteractiveDemo = () => {
             </div>
           </div>
         </div>
- 
       </div>
     </section>
   );

@@ -22,7 +22,7 @@ export const downloadAPK = (filename, downloadName) => {
 export const handleAPKDownload = (type = 'universal') => {
   const apkFiles = {
     universal: {
-      filename: 'app-release.apk',
+      filename: 'smakzie-muslim.apk',
       downloadName: 'muslimapp-smakzie-universal.apk'
     },
     arm64: {

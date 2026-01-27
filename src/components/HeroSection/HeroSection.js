@@ -14,19 +14,21 @@ const HeroSection = () => {
   const navigate = useNavigate();
   const jurusan = ['PPLG', 'TKJT', 'Pemasaran', 'Akuntansi', 'Manajemen Perkantoran'];
  
+  // UPDATE: Gambar mockup HP yang sudah jadi
   const phoneImages = [
     {
       id: 1,
       title: "Dashboard Utama",
       description: "Tampilan utama aplikasi dengan fitur lengkap",
-      image: "/assets/images/dashboard-siswa.png"   
+      image: "/assets/images/dashboard-mockup-1.png" // Ganti dengan gambar mockup yang sudah jadi
     },
     {
       id: 2,
       title: "Dashboard Guru",
       description: "Tampilan dashboard untuk guru/pembina",
-      image: "/assets/images/dashboard-guru.png"  
+      image: "/assets/images/dashboard-mockup-2.png" // Ganti dengan gambar mockup yang sudah jadi
     },
+    // Tambahkan lebih banyak mockup jika ada
   ];
  
   const dashboardSlides = [
@@ -185,7 +187,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="container mx-auto relative z-10 ">
+      <div className="container mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -247,70 +249,96 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Right - Phone dengan Gambar */}
+          {/* Right - Gambar Mockup HP yang Sudah Jadi */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            {/* Phone Frame */}
-            <div className="relative phone-frame rounded-[2.5rem]  max-w-72 mx-sm border-8 border-gray-900 dark:border-gray-100 shadow-2xl">
-              <div className="relative bg-black rounded-[2rem] overflow-hidden h-[600px]">
- 
-                
-                {/* Image Container dengan Transition */}
-                <div className="relative h-[calc(100%-50px)] overflow-hidden">
-                  {phoneImages.map((image, index) => (
-                    <motion.div
-                      key={image.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ 
-                        opacity: currentImageIndex === index ? 1 : 0,
-                        scale: currentImageIndex === index ? 1 : 0.95
+            {/* Container untuk gambar mockup HP */}
+            <div className="relative w-full max-w-xs mx-auto">
+              {/* Gambar Mockup HP - langsung tampilkan gambar mockup yang sudah jadi */}
+              <div className="relative rounded-lg shadow-2xl overflow-hidden">
+                {phoneImages.map((image, index) => (
+                  <motion.div
+                    key={image.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ 
+                      opacity: currentImageIndex === index ? 1 : 0,
+                      scale: currentImageIndex === index ? 1 : 0.95
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className={`absolute inset-0 ${currentImageIndex === index ? 'z-10' : 'z-0'}`}
+                  >
+                    <img
+                      src={image.image}
+                      alt={image.title}
+                      className="w-full h-auto rounded-lg"
+                      onError={() => handleImageError(image.id)}
+                      onLoad={() => handleImageLoad(image.id)}
+                      style={{
+                        display: imageLoaded[image.id] === false ? 'none' : 'block'
                       }}
-                      transition={{ duration: 0.5 }}
-                      className={`absolute inset-0 ${currentImageIndex === index ? 'z-10' : 'z-0'}`}
-                    >
-                      <div className="h-full w-full flex items-center justify-center bg-gradient-to-b from-gray-900 to-black">  
-                        <div className="relative w-full h-full">
-                          <img
-                            src={image.image}
-                            alt={image.title}
-                            className="w-full h-full object-contain  "
-                            onError={() => handleImageError(image.id)}
-                            onLoad={() => handleImageLoad(image.id)}
-                            style={{
-                              display: imageLoaded[image.id] === false ? 'none' : 'block'
-                            }}
-                          />
-                          
-                          {/* Placeholder jika gambar error */}
-                          {imageLoaded[image.id] === false && (
-                            <div className="w-full h-full flex flex-col items-center justify-center p-4">
-                              <div className="text-white text-4xl mb-2">📱</div>
-                              <div className="text-white font-bold text-center mb-1">{image.title}</div>
-                              <div className="text-gray-400 text-sm text-center">{image.description}</div>
-                              <div className="text-gray-500 text-xs mt-2">Preview Screen</div>
-                            </div>
-                          )}
-                          
-    
-                        </div>
+                    />
+                    
+                    {/* Placeholder jika gambar error */}
+                    {imageLoaded[image.id] === false && (
+                      <div className="w-full h-[550px] flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-black rounded-lg">
+                        <div className="text-white text-4xl mb-2">📱</div>
+                        <div className="text-white font-bold text-center mb-1">{image.title}</div>
+                        <div className="text-gray-400 text-sm text-center">{image.description}</div>
+                        <div className="text-gray-500 text-xs mt-2">Mockup Preview</div>
                       </div>
-                    </motion.div>
-                  ))}
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Kontrol navigasi gambar */}
+              {phoneImages.length > 1 && (
+                <div className="flex justify-center mt-4 space-x-4">
+                  <button
+                    onClick={prevImage}
+                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                  </button>
+                  
+                  {/* Indicator dots */}
+                  <div className="flex items-center space-x-2">
+                    {phoneImages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => {
+                          setIsAutoPlaying(false);
+                          setCurrentImageIndex(index);
+                          setTimeout(() => setIsAutoPlaying(true), 500);
+                        }}
+                        className={`w-2 h-2 rounded-full transition-all ${currentImageIndex === index ? 'w-6 bg-emerald-500' : 'bg-gray-300 dark:bg-gray-600'}`}
+                      />
+                    ))}
+                  </div>
+                  
+                  <button
+                    onClick={nextImage}
+                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    <ChevronRight className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                  </button>
                 </div>
-                
-                {/* Home Indicator */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gray-900/30 dark:bg-gray-100/30 rounded-full"></div>
+              )}
+              
+              {/* Keterangan gambar */}
+              <div className="mt-4 text-center">
+                <h3 className="font-bold text-gray-800 dark:text-white">
+                  {phoneImages[currentImageIndex]?.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {phoneImages[currentImageIndex]?.description}
+                </p>
               </div>
             </div>
-
- 
-            
-
- 
           </motion.div>
         </div>
 
