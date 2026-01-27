@@ -20,13 +20,13 @@ const HeroSection = () => {
       id: 1,
       title: "Dashboard Utama",
       description: "Tampilan utama aplikasi dengan fitur lengkap",
-      image: "/assets/images/dashboard-mockup-1.png" // Ganti dengan gambar mockup yang sudah jadi
+      image: "/assets/images/dashboard-siswa.png" // Ganti dengan gambar mockup yang sudah jadi
     },
     {
       id: 2,
       title: "Dashboard Guru",
       description: "Tampilan dashboard untuk guru/pembina",
-      image: "/assets/images/dashboard-mockup-2.png" // Ganti dengan gambar mockup yang sudah jadi
+      image: "/assets/images/dashboard-guru.png" // Ganti dengan gambar mockup yang sudah jadi
     },
     // Tambahkan lebih banyak mockup jika ada
   ];
