@@ -538,14 +538,14 @@ const FeaturesSection = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { text: 'Catatan Infaq & Sedekah', icon: '💰' },
-              { text: 'Pantau Pola Tidur', icon: '😴' },
-              { text: 'Laporan Ceramah Harian', icon: '📝' },
-              { text: 'Hafalan Al-Quran Digital', icon: '📖' },
-              { text: 'Tadarus Harian Tracker', icon: '🎯' },
-              { text: 'Buku Saku Digital', icon: '📱' },
-              { text: 'Notifikasi Kegiatan', icon: '🔔' },
-              { text: 'Forum Diskusi Siswa', icon: '💬' }
+              { text: 'Catatan Infaq & Sedekah', icon: '' },
+              { text: 'Pantau Pola Tidur', icon: '' },
+              { text: 'Laporan Ceramah Harian', icon: '' },
+              { text: 'Hafalan Al-Quran Digital', icon: '' },
+              { text: 'Tadarus Harian Tracker', icon: '' },
+              { text: 'Buku Saku Digital', icon: '' },
+              { text: 'Notifikasi Kegiatan', icon: '' },
+              { text: 'Forum Diskusi Siswa', icon: '' }
             ].map((item, index) => (
               <motion.div
                 key={item.text}
