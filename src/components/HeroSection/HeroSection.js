@@ -1,98 +1,116 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  School, Users, Target, Award, ChevronRight, 
-  Shield, UserCheck, BarChart, Eye, Download,
-  CheckCircle, ChevronLeft, Smartphone
-} from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  School,
+  Users,
+  Target,
+  Award,
+  ChevronRight,
+  Shield,
+  UserCheck,
+  BarChart,
+  Eye,
+  Download,
+  CheckCircle,
+  ChevronLeft,
+  Smartphone,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const [currentDashboardSlide, setCurrentDashboardSlide] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const navigate = useNavigate();
-  const jurusan = ['PPLG', 'TKJT', 'Pemasaran', 'Akuntansi', 'Manajemen Perkantoran'];
- 
+  const jurusan = [
+    "PPLG",
+    "TKJT",
+    "Pemasaran",
+    "Akuntansi",
+    "Manajemen Perkantoran",
+  ];
+
   // UPDATE: Gambar mockup HP yang sudah jadi
   const phoneImages = [
     {
       id: 1,
       title: "Dashboard Utama",
       description: "Tampilan utama aplikasi dengan fitur lengkap",
-      image: "/assets/images/dashboard-siswa.png" // Ganti dengan gambar mockup yang sudah jadi
+      image: "/assets/images/dashboard-siswa.png", // Ganti dengan gambar mockup yang sudah jadi
     },
     {
       id: 2,
       title: "Dashboard Guru",
       description: "Tampilan dashboard untuk guru/pembina",
-      image: "/assets/images/dashboard-guru.png" // Ganti dengan gambar mockup yang sudah jadi
+      image: "/assets/images/dashboard-guru.png", // Ganti dengan gambar mockup yang sudah jadi
     },
     // Tambahkan lebih banyak mockup jika ada
   ];
- 
+
   const dashboardSlides = [
     {
       id: 1,
       title: "Dashboard Admin Utama",
       subtitle: "Super Admin System",
-      description: "Kelola semua user, data master, dan generate laporan komprehensif untuk seluruh sistem",
+      description:
+        "Kelola semua user, data master, dan generate laporan komprehensif untuk seluruh sistem",
       features: [
         "User Management",
         "Data Master Management",
         "Report Generation",
-        "System Configuration"
+        "System Configuration",
       ],
       stats: [
         { label: "Total Users", value: "2" },
         { label: "Active Sessions", value: "320" },
-        { label: "Storage Used", value: "2.4 GB" }
+        { label: "Storage Used", value: "2.4 GB" },
       ],
       color: "from-purple-500 to-pink-500",
       icon: Shield,
-      adminType: "SUPER ADMIN"
+      adminType: "SUPER ADMIN",
     },
     {
       id: 2,
       title: "Dashboard Guru/Pembina",
       subtitle: "Class Monitoring System",
-      description: "Monitor perkembangan siswa, input nilai, dan berikan feedback secara real-time",
+      description:
+        "Monitor perkembangan siswa, input nilai, dan berikan feedback secara real-time",
       features: [
         "Student Progress Tracking",
         "Grade Management",
         "Attendance Monitoring",
-        "Broadcast Announcements"
+        "Broadcast Announcements",
       ],
       stats: [
         { label: "Total Students", value: "100+" },
         { label: "Active Classes", value: "42" },
-        { label: "Avg. Progress", value: "100%" }
+        { label: "Avg. Progress", value: "100%" },
       ],
       color: "from-blue-500 to-cyan-500",
       icon: BarChart,
-      adminType: "GURU/PEMBINA"
+      adminType: "GURU/PEMBINA",
     },
     {
       id: 3,
       title: "Dashboard Siswa",
       subtitle: "Personal Progress Tracker",
-      description: "Pantau progress ibadah pribadi, target hafalan, dan pencapaian selama Smartren",
+      description:
+        "Pantau progress ibadah pribadi, target hafalan, dan pencapaian selama Smartren",
       features: [
         "Ibadah Progress",
         "Target & Goals",
         "Achievement Badges",
-        "Personal Reports"
+        "Personal Reports",
       ],
       stats: [
         { label: "Daily Progress", value: "100%" },
         { label: "Streak Days", value: "14" },
-        { label: "Total Points", value: "1,240" }
+        { label: "Total Points", value: "1,240" },
       ],
       color: "from-emerald-500 to-green-500",
       icon: UserCheck,
-      adminType: "SISWA"
+      adminType: "SISWA",
     },
-    
   ];
 
   // Auto-play untuk carousel dashboard
@@ -124,8 +142,14 @@ const HeroSection = () => {
   // Fungsi untuk generate placeholder jika gambar tidak ditemukan
   const generatePlaceholder = (title) => {
     const colors = [
-      '1a1a2e', '16213e', '0f3460', '533483',
-      'e94560', 'f39c12', '27ae60', '8e44ad'
+      "1a1a2e",
+      "16213e",
+      "0f3460",
+      "533483",
+      "e94560",
+      "f39c12",
+      "27ae60",
+      "8e44ad",
     ];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     return `https://placehold.co/300x550/${randomColor}/ffffff?text=${encodeURIComponent(title)}&font=montserrat`;
@@ -135,12 +159,14 @@ const HeroSection = () => {
   const [imageLoaded, setImageLoaded] = useState({});
 
   const handleImageError = (id) => {
-    console.warn(`Gambar dengan ID ${id} tidak ditemukan. Menggunakan placeholder.`);
-    setImageLoaded(prev => ({ ...prev, [id]: false }));
+    console.warn(
+      `Gambar dengan ID ${id} tidak ditemukan. Menggunakan placeholder.`,
+    );
+    setImageLoaded((prev) => ({ ...prev, [id]: false }));
   };
 
   const handleImageLoad = (id) => {
-    setImageLoaded(prev => ({ ...prev, [id]: true }));
+    setImageLoaded((prev) => ({ ...prev, [id]: true }));
   };
 
   const toDownloadPage = () => {
@@ -155,7 +181,9 @@ const HeroSection = () => {
 
   const prevDashboardSlide = () => {
     setIsAutoPlaying(false);
-    setCurrentDashboardSlide((prev) => (prev - 1 + dashboardSlides.length) % dashboardSlides.length);
+    setCurrentDashboardSlide(
+      (prev) => (prev - 1 + dashboardSlides.length) % dashboardSlides.length,
+    );
     setTimeout(() => setIsAutoPlaying(true), 500);
   };
 
@@ -167,7 +195,9 @@ const HeroSection = () => {
 
   const prevImage = () => {
     setIsAutoPlaying(false);
-    setCurrentImageIndex((prev) => (prev - 1 + phoneImages.length) % phoneImages.length);
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + phoneImages.length) % phoneImages.length,
+    );
     setTimeout(() => setIsAutoPlaying(true), 500);
   };
 
@@ -176,9 +206,15 @@ const HeroSection = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 -left-20 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
-        <div className="absolute top-1/2 -right-20 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute -bottom-20 left-1/2 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '4s' }}></div>
-        
+        <div
+          className="absolute top-1/2 -right-20 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute -bottom-20 left-1/2 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"
+          style={{ animationDelay: "4s" }}
+        ></div>
+
         {/* School Badge */}
         <div className="absolute top-10 right-10 hidden lg:block">
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center">
@@ -209,23 +245,38 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">
-              MuslimApp adalah aplikasi khusus untuk mendukung kegiatan Smartren Ramadhan di SMKN 1 Cianjur. 
-              Dengan berbagai dashboard untuk siswa, guru, dan admin.
+              MuslimApp adalah aplikasi khusus untuk mendukung kegiatan Smartren
+              Ramadhan di SMKN 1 Cianjur. Dengan berbagai dashboard untuk siswa,
+              guru, dan admin.
             </p>
 
             {/* Features Highlights */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {[
-                { icon: <CheckCircle className="w-5 h-5" />, text: "Multi Dashboard" },
-                { icon: <BarChart className="w-5 h-5" />, text: "Real-time Analytics" },
-                { icon: <UserCheck className="w-5 h-5" />, text: "Progress Tracking" },
-                { icon: <Shield className="w-5 h-5" />, text: "Admin Controls" }
+                {
+                  icon: <CheckCircle className="w-5 h-5" />,
+                  text: "Multi Dashboard",
+                },
+                {
+                  icon: <BarChart className="w-5 h-5" />,
+                  text: "Real-time Analytics",
+                },
+                {
+                  icon: <UserCheck className="w-5 h-5" />,
+                  text: "Progress Tracking",
+                },
+                {
+                  icon: <Shield className="w-5 h-5" />,
+                  text: "Admin Controls",
+                },
               ].map((item, index) => (
                 <div key={index} className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                     {item.icon}
                   </div>
-                  <span className="text-sm text-gray-700 dark:text-gray-300">{item.text}</span>
+                  <span className="text-sm text-gray-700 dark:text-gray-300">
+                    {item.text}
+                  </span>
                 </div>
               ))}
             </div>
@@ -264,12 +315,12 @@ const HeroSection = () => {
                   <motion.div
                     key={image.id}
                     initial={{ opacity: 0 }}
-                    animate={{ 
+                    animate={{
                       opacity: currentImageIndex === index ? 1 : 0,
-                      scale: currentImageIndex === index ? 1 : 0.95
+                      scale: currentImageIndex === index ? 1 : 0.95,
                     }}
                     transition={{ duration: 0.5 }}
-                    className={`absolute inset-0 ${currentImageIndex === index ? 'z-10' : 'z-0'}`}
+                    className={`absolute inset-0 ${currentImageIndex === index ? "z-10" : "z-0"}`}
                   >
                     <img
                       src={image.image}
@@ -278,17 +329,24 @@ const HeroSection = () => {
                       onError={() => handleImageError(image.id)}
                       onLoad={() => handleImageLoad(image.id)}
                       style={{
-                        display: imageLoaded[image.id] === false ? 'none' : 'block'
+                        display:
+                          imageLoaded[image.id] === false ? "none" : "block",
                       }}
                     />
-                    
+
                     {/* Placeholder jika gambar error */}
                     {imageLoaded[image.id] === false && (
                       <div className="w-full h-[550px] flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-black rounded-lg">
                         <div className="text-white text-4xl mb-2">📱</div>
-                        <div className="text-white font-bold text-center mb-1">{image.title}</div>
-                        <div className="text-gray-400 text-sm text-center">{image.description}</div>
-                        <div className="text-gray-500 text-xs mt-2">Mockup Preview</div>
+                        <div className="text-white font-bold text-center mb-1">
+                          {image.title}
+                        </div>
+                        <div className="text-gray-400 text-sm text-center">
+                          {image.description}
+                        </div>
+                        <div className="text-gray-500 text-xs mt-2">
+                          Mockup Preview
+                        </div>
                       </div>
                     )}
                   </motion.div>
@@ -304,7 +362,7 @@ const HeroSection = () => {
                   >
                     <ChevronLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
                   </button>
-                  
+
                   {/* Indicator dots */}
                   <div className="flex items-center space-x-2">
                     {phoneImages.map((_, index) => (
@@ -315,11 +373,11 @@ const HeroSection = () => {
                           setCurrentImageIndex(index);
                           setTimeout(() => setIsAutoPlaying(true), 500);
                         }}
-                        className={`w-2 h-2 rounded-full transition-all ${currentImageIndex === index ? 'w-6 bg-emerald-500' : 'bg-gray-300 dark:bg-gray-600'}`}
+                        className={`w-2 h-2 rounded-full transition-all ${currentImageIndex === index ? "w-6 bg-emerald-500" : "bg-gray-300 dark:bg-gray-600"}`}
                       />
                     ))}
                   </div>
-                  
+
                   <button
                     onClick={nextImage}
                     className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
@@ -328,7 +386,7 @@ const HeroSection = () => {
                   </button>
                 </div>
               )}
-              
+
               {/* Keterangan gambar */}
               <div className="mt-4 text-center">
                 <h3 className="font-bold text-gray-800 dark:text-white">
@@ -352,13 +410,16 @@ const HeroSection = () => {
           <div className="text-center mb-10">
             <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-700 dark:text-blue-300 mb-4">
               <BarChart className="w-4 h-4" />
-              <span className="text-sm font-medium">Dashboard Admin System</span>
+              <span className="text-sm font-medium">
+                Dashboard Admin System
+              </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Multiple Dashboard Interface
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Tersedia dashboard khusus untuk setiap peran: Admin Utama, Guru/Pembina, dan Siswa
+              Tersedia dashboard khusus untuk setiap peran: Admin Utama,
+              Guru/Pembina, dan Siswa
             </p>
           </div>
 
@@ -368,9 +429,9 @@ const HeroSection = () => {
             <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 to-black">
               {dashboardSlides.map((slide, index) => {
                 if (index !== currentDashboardSlide) return null;
-                
+
                 const IconComponent = slide.icon;
-                
+
                 return (
                   <motion.div
                     key={slide.id}
@@ -386,7 +447,9 @@ const HeroSection = () => {
                         {/* Badge */}
                         <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-gray-800 to-black border border-gray-700">
                           <IconComponent className="w-4 h-4" />
-                          <span className="text-sm font-medium text-gray-300">{slide.adminType}</span>
+                          <span className="text-sm font-medium text-gray-300">
+                            {slide.adminType}
+                          </span>
                         </div>
 
                         {/* Title & Description */}
@@ -399,18 +462,21 @@ const HeroSection = () => {
                           </p>
                         </div>
 
-                        <p className="text-gray-300">
-                          {slide.description}
-                        </p>
+                        <p className="text-gray-300">{slide.description}</p>
 
                         {/* Features */}
                         <div className="grid grid-cols-2 gap-3">
                           {slide.features.map((feature, idx) => (
-                            <div key={idx} className="flex items-center space-x-2">
+                            <div
+                              key={idx}
+                              className="flex items-center space-x-2"
+                            >
                               <div className="w-6 h-6 rounded bg-emerald-500/20 flex items-center justify-center">
                                 <CheckCircle className="w-3 h-3 text-emerald-400" />
                               </div>
-                              <span className="text-sm text-gray-300">{feature}</span>
+                              <span className="text-sm text-gray-300">
+                                {feature}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -419,8 +485,12 @@ const HeroSection = () => {
                         <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-800">
                           {slide.stats.map((stat, idx) => (
                             <div key={idx} className="text-center">
-                              <div className="text-2xl font-bold text-white">{stat.value}</div>
-                              <div className="text-xs text-gray-400">{stat.label}</div>
+                              <div className="text-2xl font-bold text-white">
+                                {stat.value}
+                              </div>
+                              <div className="text-xs text-gray-400">
+                                {stat.label}
+                              </div>
                             </div>
                           ))}
                         </div>
@@ -432,12 +502,18 @@ const HeroSection = () => {
                           {/* Dashboard Header */}
                           <div className="flex items-center justify-between mb-6">
                             <div className="flex items-center space-x-3">
-                              <div className={`w-10 h-10 rounded-xl bg-gradient-to-r ${slide.color} flex items-center justify-center`}>
+                              <div
+                                className={`w-10 h-10 rounded-xl bg-gradient-to-r ${slide.color} flex items-center justify-center`}
+                              >
                                 <IconComponent className="w-5 h-5 text-white" />
                               </div>
                               <div>
-                                <div className="text-white font-bold">{slide.adminType}</div>
-                                <div className="text-xs text-gray-400">Dashboard Preview</div>
+                                <div className="text-white font-bold">
+                                  {slide.adminType}
+                                </div>
+                                <div className="text-xs text-gray-400">
+                                  Dashboard Preview
+                                </div>
                               </div>
                             </div>
                             <div className="text-right">
@@ -451,36 +527,54 @@ const HeroSection = () => {
                             {/* Chart Placeholder */}
                             <div className="h-32 bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl relative overflow-hidden">
                               <div className="absolute inset-0 flex items-end space-x-1 p-4">
-                                {[40, 60, 80, 60, 90, 70, 50].map((height, idx) => (
-                                  <div
-                                    key={idx}
-                                    className="flex-1 flex flex-col items-center"
-                                  >
+                                {[40, 60, 80, 60, 90, 70, 50].map(
+                                  (height, idx) => (
                                     <div
-                                      className={`w-3 rounded-t-lg ${idx === 4 ? 'bg-gradient-to-t from-emerald-500 to-green-500' : 'bg-gray-700'}`}
-                                      style={{ height: `${height}%` }}
-                                    ></div>
-                                    <div className="text-xs text-gray-500 mt-1">
-                                      {['M', 'T', 'W', 'T', 'F', 'S', 'S'][idx]}
+                                      key={idx}
+                                      className="flex-1 flex flex-col items-center"
+                                    >
+                                      <div
+                                        className={`w-3 rounded-t-lg ${idx === 4 ? "bg-gradient-to-t from-emerald-500 to-green-500" : "bg-gray-700"}`}
+                                        style={{ height: `${height}%` }}
+                                      ></div>
+                                      <div className="text-xs text-gray-500 mt-1">
+                                        {
+                                          ["M", "T", "W", "T", "F", "S", "S"][
+                                            idx
+                                          ]
+                                        }
+                                      </div>
                                     </div>
-                                  </div>
-                                ))}
+                                  ),
+                                )}
                               </div>
                             </div>
 
                             {/* Stats Row */}
                             <div className="grid grid-cols-3 gap-3">
                               <div className="bg-gray-800/50 rounded-lg p-3">
-                                <div className="text-xs text-gray-400">Users</div>
-                                <div className="text-lg font-bold text-white">1.2K</div>
+                                <div className="text-xs text-gray-400">
+                                  Users
+                                </div>
+                                <div className="text-lg font-bold text-white">
+                                  1.2K
+                                </div>
                               </div>
                               <div className="bg-gray-800/50 rounded-lg p-3">
-                                <div className="text-xs text-gray-400">Active</div>
-                                <div className="text-lg font-bold text-white">450</div>
+                                <div className="text-xs text-gray-400">
+                                  Active
+                                </div>
+                                <div className="text-lg font-bold text-white">
+                                  450
+                                </div>
                               </div>
                               <div className="bg-gray-800/50 rounded-lg p-3">
-                                <div className="text-xs text-gray-400">Growth</div>
-                                <div className="text-lg font-bold text-emerald-400">+12%</div>
+                                <div className="text-xs text-gray-400">
+                                  Growth
+                                </div>
+                                <div className="text-lg font-bold text-emerald-400">
+                                  +12%
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -500,7 +594,7 @@ const HeroSection = () => {
               >
                 <ChevronLeft className="w-6 h-6 text-gray-300" />
               </button>
-              
+
               {/* Progress Indicator */}
               <div className="flex items-center space-x-2">
                 {dashboardSlides.map((_, index) => (
@@ -511,11 +605,11 @@ const HeroSection = () => {
                       setCurrentDashboardSlide(index);
                       setTimeout(() => setIsAutoPlaying(true), 500);
                     }}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentDashboardSlide === index ? 'w-10 bg-gradient-to-r from-blue-500 to-cyan-500' : 'bg-gray-700 hover:bg-gray-600'}`}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentDashboardSlide === index ? "w-10 bg-gradient-to-r from-blue-500 to-cyan-500" : "bg-gray-700 hover:bg-gray-600"}`}
                   />
                 ))}
               </div>
-              
+
               <button
                 onClick={nextDashboardSlide}
                 className="p-3 rounded-full bg-gradient-to-r from-gray-800 to-black border border-gray-700 shadow-lg hover:shadow-xl hover:scale-110 transition-all"
@@ -538,7 +632,9 @@ const HeroSection = () => {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 mb-4">
                 <Award className="w-6 h-6" />
               </div>
-              <h4 className="font-bold text-gray-900 dark:text-white mb-2">Smartren 1447 H</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white mb-2">
+                Smartren 1447 H
+              </h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Telah dibuka pada hari pertama sekolah di bulan Ramadhan
               </p>
@@ -547,7 +643,9 @@ const HeroSection = () => {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 mb-4">
                 <Target className="w-6 h-6" />
               </div>
-              <h4 className="font-bold text-gray-900 dark:text-white mb-2">3 Dashboard System</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white mb-2">
+                3 Dashboard System
+              </h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Setiap peran memiliki dashboard yang dioptimalkan
               </p>
@@ -556,7 +654,9 @@ const HeroSection = () => {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 mb-4">
                 <Users className="w-6 h-6" />
               </div>
-              <h4 className="font-bold text-gray-900 dark:text-white mb-2">Untuk Semua Peran</h4>
+              <h4 className="font-bold text-gray-900 dark:text-white mb-2">
+                Untuk Semua Peran
+              </h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Admin, Guru, Siswa - Semua memiliki akses yang sesuai
               </p>
