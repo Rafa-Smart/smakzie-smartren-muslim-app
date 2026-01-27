@@ -9,11 +9,9 @@ import {
   Shield,
   UserCheck,
   BarChart,
-  Eye,
   Download,
   CheckCircle,
   ChevronLeft,
-  Smartphone,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -22,29 +20,21 @@ const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const navigate = useNavigate();
-  const jurusan = [
-    "PPLG",
-    "TKJT",
-    "Pemasaran",
-    "Akuntansi",
-    "Manajemen Perkantoran",
-  ];
 
-  // UPDATE: Gambar mockup HP yang sudah jadi
+  // Gambar mockup HP - gunakan path absolut yang benar
   const phoneImages = [
     {
       id: 1,
       title: "Dashboard Utama",
       description: "Tampilan utama aplikasi dengan fitur lengkap",
-      image: "/assets/images/dashboard-siswa.png", // Ganti dengan gambar mockup yang sudah jadi
+      image: "/assets/images/dashboard-siswa.png", // Pastikan file ini ada di public/assets/images/
     },
     {
       id: 2,
       title: "Dashboard Guru",
       description: "Tampilan dashboard untuk guru/pembina",
-      image: "/assets/images/dashboard-guru.png", // Ganti dengan gambar mockup yang sudah jadi
+      image: "/assets/images/dashboard-guru.png", // Pastikan file ini ada di public/assets/images/
     },
-    // Tambahkan lebih banyak mockup jika ada
   ];
 
   const dashboardSlides = [
@@ -138,36 +128,6 @@ const HeroSection = () => {
       if (interval) clearInterval(interval);
     };
   }, [isAutoPlaying, phoneImages.length]);
-
-  // Fungsi untuk generate placeholder jika gambar tidak ditemukan
-  const generatePlaceholder = (title) => {
-    const colors = [
-      "1a1a2e",
-      "16213e",
-      "0f3460",
-      "533483",
-      "e94560",
-      "f39c12",
-      "27ae60",
-      "8e44ad",
-    ];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    return `https://placehold.co/300x550/${randomColor}/ffffff?text=${encodeURIComponent(title)}&font=montserrat`;
-  };
-
-  // Cek apakah gambar ada sebelum load
-  const [imageLoaded, setImageLoaded] = useState({});
-
-  const handleImageError = (id) => {
-    console.warn(
-      `Gambar dengan ID ${id} tidak ditemukan. Menggunakan placeholder.`,
-    );
-    setImageLoaded((prev) => ({ ...prev, [id]: false }));
-  };
-
-  const handleImageLoad = (id) => {
-    setImageLoaded((prev) => ({ ...prev, [id]: true }));
-  };
 
   const toDownloadPage = () => {
     navigate({ pathname: "/download" });
@@ -285,7 +245,7 @@ const HeroSection = () => {
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={toDownloadPage}
-                className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold hover:from-emerald-700 hover:to-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 text-white font-semibold hover:from-emerald-700 hover:to-green-700 transition-all transform hover:-translate-y-0.5"
               >
                 <Download className="w-6 h-6 mr-2" />
                 Download Aplikasi
@@ -309,8 +269,8 @@ const HeroSection = () => {
           >
             {/* Container untuk gambar mockup HP */}
             <div className="relative w-full max-w-xs mx-auto">
-              {/* Gambar Mockup HP - langsung tampilkan gambar mockup yang sudah jadi */}
-              <div className="relative rounded-lg shadow-2xl overflow-hidden">
+              {/* Gambar Mockup HP */}
+              <div className="relative rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                 {phoneImages.map((image, index) => (
                   <motion.div
                     key={image.id}
@@ -326,29 +286,19 @@ const HeroSection = () => {
                       src={image.image}
                       alt={image.title}
                       className="w-full h-auto rounded-lg"
-                      onError={() => handleImageError(image.id)}
-                      onLoad={() => handleImageLoad(image.id)}
                       style={{
-                        display:
-                          imageLoaded[image.id] === false ? "none" : "block",
+                        minHeight: "400px",
+                        objectFit: "contain",
+                        background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)"
+                      }}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        // Fallback jika gambar tidak ditemukan
+                        e.target.src = `https://via.placeholder.com/300x600/1a1a2e/ffffff?text=${encodeURIComponent(image.title)}`;
+                        e.target.alt = `Placeholder: ${image.title}`;
+                        console.log(`Gambar ${image.image} tidak ditemukan, menggunakan placeholder`);
                       }}
                     />
-
-                    {/* Placeholder jika gambar error */}
-                    {imageLoaded[image.id] === false && (
-                      <div className="w-full h-[550px] flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-black rounded-lg">
-                        <div className="text-white text-4xl mb-2">📱</div>
-                        <div className="text-white font-bold text-center mb-1">
-                          {image.title}
-                        </div>
-                        <div className="text-gray-400 text-sm text-center">
-                          {image.description}
-                        </div>
-                        <div className="text-gray-500 text-xs mt-2">
-                          Mockup Preview
-                        </div>
-                      </div>
-                    )}
                   </motion.div>
                 ))}
               </div>
@@ -590,7 +540,7 @@ const HeroSection = () => {
             <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-6">
               <button
                 onClick={prevDashboardSlide}
-                className="p-3 rounded-full bg-gradient-to-r from-gray-800 to-black border border-gray-700 shadow-lg hover:shadow-xl hover:scale-110 transition-all"
+                className="p-3 rounded-full bg-gradient-to-r from-gray-800 to-black border border-gray-700 hover:scale-110 transition-all"
               >
                 <ChevronLeft className="w-6 h-6 text-gray-300" />
               </button>
@@ -612,7 +562,7 @@ const HeroSection = () => {
 
               <button
                 onClick={nextDashboardSlide}
-                className="p-3 rounded-full bg-gradient-to-r from-gray-800 to-black border border-gray-700 shadow-lg hover:shadow-xl hover:scale-110 transition-all"
+                className="p-3 rounded-full bg-gradient-to-r from-gray-800 to-black border border-gray-700 hover:scale-110 transition-all"
               >
                 <ChevronRight className="w-6 h-6 text-gray-300" />
               </button>
