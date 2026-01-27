@@ -285,7 +285,7 @@ const FloatingDownloadButton = () => {
                             : 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
                           }
                         `}>
-                          {downloading ? '⏳' : '~45 MB'}
+                          {downloading ? '⏳' : '~74 MB'}
                         </div>
                       </div>
                     </div>
