@@ -276,7 +276,7 @@ const FloatingDownloadButton = () => {
                         <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 truncate">
                           {downloading ? 'Tunggu sebentar...' : 'Satu file untuk semua HP'}
                         </div>
-                      </div>
+                      </div> 
                       <div className="flex-shrink-0">
                         <div className={`
                           text-xs px-2 py-1 rounded-full font-medium
@@ -324,7 +324,7 @@ const FloatingDownloadButton = () => {
                   {/* Direct Link Fallback */}
                   <div className="pt-1">
                     <a
-                      href="/apk/app-release.apk"
+                      href="https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v1.0.0/app-release.apk"
                       download="muslimapp-smakzie-universal.apk"
                       className="
                         inline-flex items-center 
