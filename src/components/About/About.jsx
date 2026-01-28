@@ -71,7 +71,7 @@ const AboutPage = () => {
       name: "Rafa Khadafi",
       role: "Fullstack Developer",
       description:
-        "fullstack aja",
+        "Spesialis dalam pengembangan aplikasi mobile dan web dengan fokus pada clean code dan best practices.",
       skills: ["React/Next.js", "Flutter", "dll"],
       avatarColor: "from-blue-500 to-cyan-500",
       social: {
