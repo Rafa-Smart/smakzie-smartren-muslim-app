@@ -24,7 +24,12 @@ import {
   Search,
   Filter,
   Grid,
-  List
+  List,
+   
+  Sparkles,
+  Quote,
+  Smile,
+  FileText
 } from 'lucide-react';
 
 const InteractiveDemo = () => {
@@ -38,7 +43,7 @@ const InteractiveDemo = () => {
   const autoPlayIntervalRef = useRef(null);
   const autoPlayDuration = 3000; // 3 detik per slide
 
-  // Semua fitur yang diminta
+  // Semua fitur termasuk yang baru
   const screens = [
     {
       id: 0,
@@ -82,6 +87,26 @@ const InteractiveDemo = () => {
     },
     {
       id: 4,
+      title: 'Tasbih Digital',
+      description: 'Penghitung dzikir digital',
+      image: '/assets/images/tasbih-screen.png',
+      icon: <Compass className="w-5 h-5" />,
+      color: 'from-rose-500 to-pink-500',
+      category: 'Ibadah',
+      mockupImage: '/assets/images/tasbih-screen.png'
+    },
+    {
+      id: 5,
+      title: 'Asmaul Husna',
+      description: '99 nama-nama Allah SWT',
+      image: '/assets/images/asmaul-husna-screen.png',
+      icon: <Sparkles className="w-5 h-5" />,
+      color: 'from-indigo-500 to-purple-500',
+      category: 'Ibadah',
+      mockupImage: '/assets/images/asmaul-husna-screen.png'
+    },
+    {
+      id: 6,
       title: 'Pola Tidur',
       description: 'Monitor waktu tidur',
       image: '/assets/images/tidur-screen.png',
@@ -91,7 +116,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/tidur-screen.png'
     },
     {
-      id: 5,
+      id: 7,
       title: 'Smartren Ramadhan',
       description: 'Jadwal kegiatan Ramadhan',
       image: '/assets/images/calender-screen.png',
@@ -101,7 +126,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/calender-screen.png'
     },
     {
-      id: 6,
+      id: 8,
       title: 'Smartren 2026',
       description: 'Persiapan Ramadhan 1447 H',
       image: '/assets/images/smartren2026-screen.png',
@@ -111,7 +136,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/smartren2026-screen.png'
     },
     {
-      id: 7,
+      id: 9,
       title: 'Absensi Siswa',
       description: 'Presensi harian peserta',
       image: '/assets/images/absensi-screen.png',
@@ -121,7 +146,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/absensi-screen.png'
     },
     {
-      id: 8,
+      id: 10,
       title: 'Daily Kegiatan',
       description: 'Aktivitas harian Smartren',
       image: '/assets/images/daily-screen.png',
@@ -131,7 +156,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/daily-screen.png'
     },
     {
-      id: 9,
+      id: 11,
       title: 'Laporan Puasa',
       description: 'Catatan puasa Ramadhan',
       image: '/assets/images/puasa-screen.png',
@@ -141,7 +166,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/puasa-screen.png'
     },
     {
-      id: 10,
+      id: 12,
       title: 'Laporan Sholat',
       description: 'Catatan shalat harian',
       image: '/assets/images/laporan-sholat-screen.png',
@@ -151,7 +176,17 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/laporan-sholat-screen.png'
     },
     {
-      id: 11,
+      id: 13,
+      title: 'Laporan Tugas',
+      description: 'Catatan tugas harian',
+      image: '/assets/images/laporan-tugas-screen.png',
+      icon: <FileText className="w-5 h-5" />,
+      color: 'from-amber-500 to-orange-500',
+      category: 'Laporan',
+      mockupImage: '/assets/images/laporan-tugas-screen.png'
+    },
+    {
+      id: 14,
       title: 'Tadarus',
       description: 'Membaca Al-Quran harian',
       image: '/assets/images/ngaji-screen.png',
@@ -161,7 +196,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/ngaji-screen.png'
     },
     {
-      id: 12,
+      id: 15,
       title: 'Hafalan',
       description: 'Menghafal ayat Al-Quran',
       image: '/assets/images/hafalan-screen.png',
@@ -171,7 +206,17 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/hafalan-screen.png'
     },
     {
-      id: 13,
+      id: 16,
+      title: 'Kumpulan Hadist',
+      description: 'Hadist-hadist pilihan',
+      image: '/assets/images/hadist-screen.png',
+      icon: <Quote className="w-5 h-5" />,
+      color: 'from-blue-500 to-cyan-500',
+      category: 'Edukasi',
+      mockupImage: '/assets/images/hadist-screen.png'
+    },
+    {
+      id: 17,
       title: 'Ceramah',
       description: 'Kumpulan ceramah agama',
       image: '/assets/images/laporan-ceramah-screen.png',
@@ -181,7 +226,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/laporan-ceramah-screen.png'
     },
     {
-      id: 14,
+      id: 18,
       title: 'Infak',
       description: 'Sedekah dan donasi',
       image: '/assets/images/infaq-screen.png',
@@ -191,7 +236,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/infaq-screen.png'
     },
     {
-      id: 15,
+      id: 19,
       title: 'Bantu Orang Tua',
       description: 'Kegiatan membantu orang tua',
       image: '/assets/images/bantu-ortu-screen.png',
@@ -201,7 +246,7 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/bantu-ortu-screen.png'
     },
     {
-      id: 16,
+      id: 20,
       title: 'Olahraga Ringan',
       description: 'Aktivitas fisik sehat',
       image: '/assets/images/olahraga-screen.png',
@@ -211,7 +256,17 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/olahraga-screen.png'
     },
     {
-      id: 17,
+      id: 21,
+      title: 'Mood Tracker',
+      description: 'Pantau kondisi emosional',
+      image: '/assets/images/mood-screen.png',
+      icon: <Smile className="w-5 h-5" />,
+      color: 'from-pink-500 to-rose-500',
+      category: 'Kesehatan',
+      mockupImage: '/assets/images/mood-screen.png'
+    },
+    {
+      id: 22,
       title: 'Gemar Belajar',
       description: 'Materi pembelajaran Islam',
       image: '/assets/images/belajar-screen.png',
@@ -221,9 +276,9 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/belajar-screen.png'
     },
     {
-      id: 18,
+      id: 23,
       title: 'Papan peringkat',
-      description: 'berlomba lomba dalam kebaikan',
+      description: 'Berlomba-lomba dalam kebaikan',
       image: '/assets/images/papan-peringkat-screen.png',
       icon: <TrendingUp className="w-5 h-5" />,
       color: 'from-purple-500 to-indigo-500',
@@ -231,18 +286,18 @@ const InteractiveDemo = () => {
       mockupImage: '/assets/images/papan-peringkat-screen.png'
     },
     {
-      id: 19,
-      title: 'monitoring siswa',
-      description: 'monotoring aktivitas siswa selama di smartren',
+      id: 24,
+      title: 'Monitoring Siswa',
+      description: 'Monitoring aktivitas siswa selama di smartren',
       image: '/assets/images/monitoring-siswa-screen.png',
       icon: <TrendingUp className="w-5 h-5" />,
       color: 'from-purple-500 to-indigo-500',
-      category: 'Sosial',
+      category: 'Administrasi',
       mockupImage: '/assets/images/monitoring-siswa.png'
     }
   ];
 
-  // Kategori untuk filter
+  // Kategori untuk filter dengan jumlah yang diperbarui
   const categories = [
     { id: 'semua', label: 'Semua', count: screens.length, color: 'from-gray-500 to-gray-600' },
     { id: 'ibadah', label: 'Ibadah', count: screens.filter(s => s.category === 'Ibadah').length, color: 'from-emerald-500 to-green-500' },
@@ -342,7 +397,7 @@ const InteractiveDemo = () => {
                 transition={{ delay: 0.2 }}
                 className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-800/20 rounded-2xl p-4"
               >
-                <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">8</div>
+                <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{categories.length}</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Kategori</div>
               </motion.div>
             </div>

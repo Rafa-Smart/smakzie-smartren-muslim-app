@@ -54,7 +54,7 @@ const FloatingDownloadButton = () => {
     
     // Buat element link untuk download
     const link = document.createElement('a');
-    link.href = `https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v2.0.0/smakzie-muslim.apk`;
+    link.href = `https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v3.0.0/smakzie-muslim.apk`;
     link.download = downloadName;
     link.target = '_blank';
     
@@ -324,7 +324,7 @@ const FloatingDownloadButton = () => {
                   {/* Direct Link Fallback */}
                   <div className="pt-1">
                     <a
-                      href="https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v2.0.0/smakzie-muslim.apk"
+                      href="https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v3.0.0/smakzie-muslim.apk"
                       download="muslimapp-smakzie-universal.apk"
                       className="
                         inline-flex items-center 
