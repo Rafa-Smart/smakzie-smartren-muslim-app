@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X, Download, Sparkles } from 'lucide-react';
+import { Moon, Sun, Menu, X, Download } from 'lucide-react'; // Sparkles dihapus karena tidak digunakan
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext.js';
 
@@ -25,30 +25,12 @@ const Header = () => {
   }, [location.pathname]);
 
   const navItems = [
-    { 
-      label: 'Home', 
-      path: '/',
-    },
-    { 
-      label: 'Features', 
-      path: '/features',
-    },
-    { 
-      label: 'Demo', 
-      path: '/interactive',
-    },
-    { 
-      label: 'UI Showcase', 
-      path: '/ui-showcase',
-    },
-    { 
-      label: 'Download', 
-      path: '/download',
-    },
-      { 
-    label: 'About',  // Menu baru
-    path: '/about',
-  },
+    { label: 'Home', path: '/' },
+    { label: 'Features', path: '/features' },
+    { label: 'Demo', path: '/interactive' },
+    { label: 'UI Showcase', path: '/ui-showcase' },
+    { label: 'Download', path: '/download' },
+    { label: 'About', path: '/about' },
   ];
 
   const handleThemeToggle = () => {
@@ -63,40 +45,28 @@ const Header = () => {
   return (
     <>
       {/* Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white dark:bg-gray-900 shadow-md py-3' 
-          : 'bg-white dark:bg-gray-900 py-4'
-      }`}>
-        
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-white dark:bg-gray-900 shadow-md py-3'
+            : 'bg-white dark:bg-gray-900 py-4'
+        }`}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            
-            {/* Logo */}
-            <Link 
-              to="/" 
-              className="flex items-center space-x-3 group"
-            >
-              <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-emerald-600 flex items-center justify-center shadow-md">
-                  <Sparkles className="w-5 h-5 text-white" />
-                </div>
-              </div>
-              
-              <div className="flex flex-col">
-                <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                  Muslim<span className="text-primary-600 dark:text-primary-400">App</span>
-                </h1>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  For Ramadan & Smakzie
-                </p>
-              </div>
+            {/* Logo - Diganti dengan gambar PNG */}
+            <Link to="/" className="flex items-center">
+              <img
+               src="/assets/images/ziekir_logo.png"
+                alt="Ziekir Logo"
+                className="h-20 w-auto" // Sesuaikan tinggi sesuai kebutuhan
+              />
             </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1">
               {navItems.map((item, index) => (
-                <div 
+                <div
                   key={item.label}
                   className="relative"
                   onMouseEnter={() => setHoveredItem(index)}
@@ -107,20 +77,27 @@ const Header = () => {
                     end={item.path === '/'}
                     className={({ isActive }) => `
                       relative px-4 py-2 rounded-lg transition-all duration-300
-                      ${isActive 
-                        ? 'text-primary-600 dark:text-primary-400 font-medium' 
-                        : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
+                      ${
+                        isActive
+                          ? 'text-primary-600 dark:text-primary-400 font-medium'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
                       }
                     `}
                   >
                     {/* Active indicator */}
-                    <div className={`
+                    <div
+                      className={`
                       absolute bottom-0 left-1/2 transform -translate-x-1/2
                       w-6 h-0.5 bg-primary-500 dark:bg-primary-400
                       rounded-full transition-all duration-300
-                      ${location.pathname === item.path ? 'w-full opacity-100' : 'w-0 opacity-0'}
-                    `}></div>
-                    
+                      ${
+                        location.pathname === item.path
+                          ? 'w-full opacity-100'
+                          : 'w-0 opacity-0'
+                      }
+                    `}
+                    ></div>
+
                     <span className="relative z-10 font-medium text-sm">
                       {item.label}
                     </span>
@@ -177,10 +154,12 @@ const Header = () => {
         </div>
 
         {/* Mobile menu */}
-        <div className={`
+        <div
+          className={`
           lg:hidden overflow-hidden transition-all duration-300
           ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
-        `}>
+        `}
+        >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="py-4 border-t border-gray-200 dark:border-gray-800 space-y-2">
               {navItems.map((item) => (
@@ -189,21 +168,28 @@ const Header = () => {
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
                   className={({ isActive }) => {
-                    const baseClasses = "flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-300";
-                    const activeClasses = "bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-medium";
-                    const inactiveClasses = "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800";
-                    
-                    return `${baseClasses} ${isActive ? activeClasses : inactiveClasses}`;
+                    const baseClasses =
+                      'flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-300';
+                    const activeClasses =
+                      'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-medium';
+                    const inactiveClasses =
+                      'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800';
+
+                    return `${baseClasses} ${
+                      isActive ? activeClasses : inactiveClasses
+                    }`;
                   }}
                 >
                   {({ isActive }) => (
                     <>
                       <div className="flex items-center space-x-3">
-                        <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                          isActive 
-                            ? 'bg-primary-500 scale-125' 
-                            : 'bg-gray-400'
-                        }`}></div>
+                        <div
+                          className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                            isActive
+                              ? 'bg-primary-500 scale-125'
+                              : 'bg-gray-400'
+                          }`}
+                        ></div>
                         <span className="font-medium">{item.label}</span>
                       </div>
                       {item.path === '/download' && (
@@ -213,7 +199,7 @@ const Header = () => {
                   )}
                 </NavLink>
               ))}
-              
+
               {/* Mobile Download Button */}
               <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
                 <NavLink

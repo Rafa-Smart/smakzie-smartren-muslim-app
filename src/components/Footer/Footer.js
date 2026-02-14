@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Youtube, Heart, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
   const footerLinks = [
@@ -45,9 +45,12 @@ const Footer = () => {
           {/* Brand Section */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">S</span>
-              </div>
+              {/* Ganti lingkaran dengan inisial 'S' menjadi logo gambar */}
+              <img 
+                src="/assets/images/ziekir_logo.png" 
+                alt="Ziekir Logo" 
+                className="w-20 h-20 object-contain"
+              />
               <div>
                 <h3 className="text-2xl font-bold text-white">Smartren Smakzie</h3>
                 <p className="text-gray-400">Aplikasi Pendamping Kegiatan Ramadhan</p>
@@ -108,7 +111,6 @@ const Footer = () => {
                 </ul>
               </div>
             ))}
-  
           </div>
         </div>
 
@@ -146,7 +148,6 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               © {new Date().getFullYear()} Smartren SMKN 1 Cianjur. Hak Cipta Dilindungi.
             </p>
- 
           </div>
 
           <div className="text-center">
