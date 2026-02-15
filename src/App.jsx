@@ -12,6 +12,7 @@ import Footer from "./components/Footer/Footer";
 import "./styles/globals.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FloatingDownloadButton from "./components/FloatingDownloadButton/FloatingDownloadButton";
+import NotFoundPage from "./components/NotFound/NotFOund";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
                 <Route path="/ui-showcase" element={<UIShowcase />} />
                 <Route path="/download" element={<CTASection />} />
                 <Route path="/about" element={<AboutPage />} />  
+                <Route path="/*" element={<NotFoundPage />} />  
+
               </Routes>
               <FloatingDownloadButton></FloatingDownloadButton>
             </main>

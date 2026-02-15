@@ -61,7 +61,7 @@ const FloatingDownloadButton = () => {
 
     // Buat element link untuk download
     const link = document.createElement("a");
-    link.href = `https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v4.0.0/smakzie-muslim.apk`;
+    link.href = `https://github.com/Rafa-Smart/ziekirplus/releases/download/latest/ziekirplus.apk`;
     link.download = downloadName;
     link.target = "_blank";
 
