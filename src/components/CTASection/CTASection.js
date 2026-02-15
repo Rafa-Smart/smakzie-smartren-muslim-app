@@ -34,33 +34,30 @@ const CTASection = () => {
   // Fungsi untuk download file APK
   const downloadAPK = (filename, apkName) => {
     setDownloading(true);
-    
-    // Buat element link untuk download
-    const link = document.createElement('a');
-    link.href = `https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v4.0.0/smakzie-muslim.apk`; 
+
+    // Buat element link untuk download Ziekir+
+    const link = document.createElement("a");
+    link.href = `https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v4.0.0/smakzie-muslim.apk`;
     link.download = apkName;
-    link.target = '_blank';
-    
+    link.target = "_blank";
+
     // Simulasi download
     setTimeout(() => {
       link.click();
       setDownloading(false);
-      
-      
     }, 500);
   };
 
   // Data APK
-
 
   const universalApk = {
     title: "APK Universal",
     subtitle: "Rekomendasi Utama",
     description:
       "Satu file APK yang kompatibel dengan semua perangkat Android. Solusi terbaik untuk semua siswa Smakzie tanpa perlu khawatir dengan spesifikasi perangkat.",
-    fileSize: "~74 MB",
+    fileSize: "~69 MB",
     fileName: "smakzie-muslim.apk",
-    downloadName: "muslimapp-smakzie.apk",
+    downloadName: "Ziekirplus.apk",
     features: [
       { text: "Kompatibel dengan 99% HP Android", icon: Phone },
       { text: "Mudah dibagikan via WhatsApp/Telegram", icon: Download },
@@ -69,7 +66,7 @@ const CTASection = () => {
     ],
     icon: Package,
     color: "from-emerald-500 to-green-500",
-    buildCommand: "flutter build apk --release"
+    buildCommand: "flutter build apk --release",
   };
 
   const archApks = [
@@ -79,12 +76,13 @@ const CTASection = () => {
       description: "Optimized untuk HP Android modern (rilis 2016-sekarang)",
       fileSize: "~32 MB",
       fileName: "app-arm64-v8a-release.apk",
-      downloadName: "muslimapp-smakzie-arm64.apk",
+      downloadName: "Ziekir+-smakzie-arm64.apk",
       percentage: "85%",
       icon: Cpu,
       color: "from-blue-500 to-cyan-500",
       recommendedFor: "HP Android Modern",
-      buildCommand: "flutter build apk --target-platform android-arm64 --release"
+      buildCommand:
+        "flutter build apk --target-platform android-arm64 --release",
     },
     {
       arch: "ARM",
@@ -92,12 +90,12 @@ const CTASection = () => {
       description: "Untuk HP Android lama atau spesifikasi rendah",
       fileSize: "~30 MB",
       fileName: "app-armeabi-v7a-release.apk",
-      downloadName: "muslimapp-smakzie-armv7.apk",
+      downloadName: "Ziekir+-smakzie-armv7.apk",
       percentage: "10%",
       icon: Smartphone,
       color: "from-amber-500 to-orange-500",
       recommendedFor: "HP Android Lama",
-      buildCommand: "flutter build apk --target-platform android-arm --release"
+      buildCommand: "flutter build apk --target-platform android-arm --release",
     },
     {
       arch: "x86",
@@ -105,12 +103,12 @@ const CTASection = () => {
       description: "Khusus emulator atau perangkat berbasis Intel/AMD",
       fileSize: "~35 MB",
       fileName: "app-x86_64-release.apk",
-      downloadName: "muslimapp-smakzie-x86.apk",
+      downloadName: "Ziekir+-smakzie-x86.apk",
       percentage: "5%",
       icon: Cpu,
       color: "from-purple-500 to-pink-500",
       recommendedFor: "Emulator/PC",
-      buildCommand: "flutter build apk --target-platform android-x64 --release"
+      buildCommand: "flutter build apk --target-platform android-x64 --release",
     },
   ];
 
@@ -121,7 +119,7 @@ const CTASection = () => {
     >
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950"></div>
-      
+
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-64 h-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-200/20 blur-3xl dark:bg-emerald-500/10"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 translate-x-1/3 translate-y-1/3 rounded-full bg-green-200/20 blur-3xl dark:bg-green-500/10"></div>
@@ -148,7 +146,7 @@ const CTASection = () => {
 
             <div className="space-y-4">
               <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl md:text-5xl lg:text-6xl">
-                Download MuslimApp
+                Download Ziekir+
               </h1>
               <h2 className="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 bg-clip-text text-transparent sm:text-3xl md:text-4xl">
                 Smartren Ramadhan 1447 H
@@ -156,15 +154,19 @@ const CTASection = () => {
             </div>
 
             <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300 sm:text-xl">
-              Aplikasi resmi untuk mendukung kegiatan Smartren Ramadhan di SMKN 1 Cianjur. 
-              Pilih versi APK yang sesuai dengan kebutuhan perangkat Anda.
+              Aplikasi resmi untuk mendukung kegiatan Smartren Ramadhan di SMKN
+              1 Cianjur. Pilih versi APK yang sesuai dengan kebutuhan perangkat
+              Anda.
             </p>
 
             {/* Quick Tips */}
             <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10 rounded-xl p-4 max-w-2xl mx-auto">
               <div className="flex items-center justify-center space-x-2 text-blue-600 dark:text-blue-400">
                 <Info className="w-5 h-5" />
-                <span className="text-sm font-medium">Tips: Setelah download, izinkan instalasi dari "Sumber Tidak Dikenal" di pengaturan Android</span>
+                <span className="text-sm font-medium">
+                  Tips: Setelah download, izinkan instalasi dari "Sumber Tidak
+                  Dikenal" di pengaturan Android
+                </span>
               </div>
             </div>
           </div>
@@ -189,13 +191,14 @@ const CTASection = () => {
 
             <div className="bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden">
               <div className="relative">
-
                 <div className="p-6 sm:p-8 md:p-10">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                     {/* Left Column - Info */}
                     <div className="space-y-6">
                       <div className="flex items-center space-x-4">
-                        <div className={`flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-r ${universalApk.color} flex items-center justify-center shadow-lg`}>
+                        <div
+                          className={`flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-r ${universalApk.color} flex items-center justify-center shadow-lg`}
+                        >
                           <universalApk.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                         </div>
                         <div>
@@ -269,7 +272,12 @@ const CTASection = () => {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        onClick={() => downloadAPK(universalApk.fileName, universalApk.downloadName)}
+                        onClick={() =>
+                          downloadAPK(
+                            universalApk.fileName,
+                            universalApk.downloadName,
+                          )
+                        }
                         disabled={downloading}
                         className={`w-full py-4 px-6 rounded-xl bg-gradient-to-r ${universalApk.color} text-white font-bold text-lg flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed`}
                       >
@@ -341,17 +349,19 @@ const CTASection = () => {
                   </div>
                 </div>
                 <div className="flex-1 space-y-3">
-
                   <p className="text-gray-700 dark:text-gray-300">
-                    Versi arsitektur spesifik hanya direkomendasikan jika Anda memahami 
-                    spesifikasi perangkat Android Anda. Jika tidak yakin, gunakan APK Universal.
+                    Versi arsitektur spesifik hanya direkomendasikan jika Anda
+                    memahami spesifikasi perangkat Android Anda. Jika tidak
+                    yakin, gunakan APK Universal.
                   </p>
                   <button
                     onClick={() => setShowArchInfo(!showArchInfo)}
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm sm:text-base"
                   >
                     <HelpCircle className="w-4 h-4 mr-2" />
-                    {showArchInfo ? "Sembunyikan detail" : "Pelajari perbedaan arsitektur"}
+                    {showArchInfo
+                      ? "Sembunyikan detail"
+                      : "Pelajari perbedaan arsitektur"}
                   </button>
                 </div>
               </div>
@@ -463,10 +473,12 @@ const CTASection = () => {
                 whileTap={selectedArch ? { scale: 0.98 } : {}}
                 onClick={() => {
                   if (!selectedArch) {
-                    alert("Silakan pilih salah satu arsitektur terlebih dahulu!");
+                    alert(
+                      "Silakan pilih salah satu arsitektur terlebih dahulu!",
+                    );
                     return;
                   }
-                  
+
                   const selected = archApks.find(
                     (apk) => apk.arch === selectedArch,
                   );
@@ -502,8 +514,8 @@ const CTASection = () => {
               {selectedArch && (
                 <div className="mt-4 flex flex-wrap justify-center gap-3">
                   {archApks
-                    .filter(apk => apk.arch === selectedArch)
-                    .map(apk => (
+                    .filter((apk) => apk.arch === selectedArch)
+                    .map((apk) => (
                       <a
                         key={apk.arch}
                         href={`/apk/${apk.fileName}`}
@@ -579,7 +591,8 @@ const CTASection = () => {
                           </span>
                         </div>
                         <span className="text-gray-600 dark:text-gray-300">
-                          <span className="font-semibold">Kompatibilitas:</span> 99% perangkat Android
+                          <span className="font-semibold">Kompatibilitas:</span>{" "}
+                          99% perangkat Android
                         </span>
                       </div>
                       <div className="flex items-start space-x-3">
@@ -589,7 +602,8 @@ const CTASection = () => {
                           </span>
                         </div>
                         <span className="text-gray-600 dark:text-gray-300">
-                          <span className="font-semibold">Output File:</span> app-release.apk (45 MB)
+                          <span className="font-semibold">Output File:</span>{" "}
+                          app-release.apk (45 MB)
                         </span>
                       </div>
                     </div>
@@ -646,7 +660,8 @@ const CTASection = () => {
                           </span>
                         </div>
                         <span className="text-gray-600 dark:text-gray-300">
-                          <span className="font-semibold">Untuk:</span> Testing, pengguna yang tahu spesifikasi perangkat
+                          <span className="font-semibold">Untuk:</span> Testing,
+                          pengguna yang tahu spesifikasi perangkat
                         </span>
                       </div>
                     </div>
@@ -663,9 +678,12 @@ const CTASection = () => {
                     <li>Buka file manager/explorer di HP Android</li>
                     <li>Cari file APK di folder Downloads</li>
                     <li>Ketuk file APK untuk mulai instalasi</li>
-                    <li>Jika muncul peringatan "Sumber Tidak Dikenal", aktifkan izin instalasi dari sumber tidak dikenal</li>
+                    <li>
+                      Jika muncul peringatan "Sumber Tidak Dikenal", aktifkan
+                      izin instalasi dari sumber tidak dikenal
+                    </li>
                     <li>Ikuti langkah instalasi sampai selesai</li>
-                    <li>Buka aplikasi MuslimApp dan login dengan akun Smakzie</li>
+                    <li>Buka aplikasi Ziekir+ dan login dengan akun Smakzie</li>
                   </ol>
                 </div>
               </div>
@@ -684,9 +702,12 @@ const CTASection = () => {
             <div className="relative bg-gradient-to-r from-emerald-600/90 to-green-600/90 rounded-3xl sm:rounded-4xl p-8 sm:p-12 lg:p-16 overflow-hidden">
               {/* Pattern Overlay */}
               <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0" style={{
-                  backgroundImage: `radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)`,
-                }}></div>
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    backgroundImage: `radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)`,
+                  }}
+                ></div>
               </div>
 
               <div className="relative text-center space-y-8 max-w-4xl mx-auto">
@@ -703,8 +724,9 @@ const CTASection = () => {
                   </h3>
 
                   <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
-                    Download MuslimApp sekarang untuk mendukung kegiatan Smartren Ramadhan di SMKN 1 Cianjur.
-                    Aplikasi ini mendukung semua kompetensi keahlian:
+                    Download Ziekir+ sekarang untuk mendukung kegiatan Smartren
+                    Ramadhan di SMKN 1 Cianjur. Aplikasi ini mendukung semua
+                    kompetensi keahlian:
                   </p>
                 </div>
 
@@ -728,7 +750,12 @@ const CTASection = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => downloadAPK(universalApk.fileName, universalApk.downloadName)}
+                    onClick={() =>
+                      downloadAPK(
+                        universalApk.fileName,
+                        universalApk.downloadName,
+                      )
+                    }
                     disabled={downloading}
                     className="inline-flex items-center space-x-3 px-8 py-4 bg-white text-emerald-600 font-bold rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >

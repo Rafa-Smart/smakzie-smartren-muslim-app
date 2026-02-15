@@ -1,7 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Download, X, Smartphone, CheckCircle, AlertCircle, ExternalLink } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Download,
+  X,
+  Smartphone,
+  CheckCircle,
+  AlertCircle,
+  ExternalLink,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const FloatingDownloadButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +21,7 @@ const FloatingDownloadButton = () => {
 
   // Cek apakah sudah pernah berinteraksi dengan floating button
   useEffect(() => {
-    const interacted = localStorage.getItem('floatingButtonInteracted');
+    const interacted = localStorage.getItem("floatingButtonInteracted");
     if (interacted) {
       setHasInteracted(true);
     }
@@ -34,16 +41,16 @@ const FloatingDownloadButton = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
   // Simpan interaksi user ke localStorage
   const handleInteraction = () => {
     if (!hasInteracted) {
-      localStorage.setItem('floatingButtonInteracted', 'true');
+      localStorage.setItem("floatingButtonInteracted", "true");
       setHasInteracted(true);
     }
   };
@@ -51,24 +58,24 @@ const FloatingDownloadButton = () => {
   // Fungsi untuk download file APK
   const downloadAPK = (filename, downloadName) => {
     setDownloading(true);
-    
+
     // Buat element link untuk download
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = `https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v4.0.0/smakzie-muslim.apk`;
     link.download = downloadName;
-    link.target = '_blank';
-    
+    link.target = "_blank";
+
     // Simulasi delay untuk feedback visual
     setTimeout(() => {
       link.click();
       setDownloading(false);
-      
+
       // Tampilkan notifikasi sukses
       setShowNotification(true);
       setTimeout(() => {
         setShowNotification(false);
       }, 3000);
-      
+
       // Simpan interaksi ke localStorage
       handleInteraction();
       setIsOpen(false);
@@ -77,12 +84,12 @@ const FloatingDownloadButton = () => {
 
   // Handle download universal APK
   const handleDownloadUniversal = () => {
-    downloadAPK('smakzie-muslim.apk', 'muslimapp-smakzie.apk');
+    downloadAPK("smakzie-muslim.apk", "Ziekir+-smakzie.apk");
   };
 
   // Navigate ke halaman download untuk melihat semua versi
   const handleViewAllVersions = () => {
-    navigate('/download');
+    navigate("/download");
     handleInteraction();
     setIsOpen(false);
   };
@@ -90,51 +97,51 @@ const FloatingDownloadButton = () => {
   // Animasi untuk floating button
   const buttonVariants = {
     hidden: { scale: 0, opacity: 0 },
-    visible: { 
-      scale: 1, 
+    visible: {
+      scale: 1,
       opacity: 1,
       transition: {
         type: "spring",
         stiffness: 260,
-        damping: 20
-      }
+        damping: 20,
+      },
     },
     pulse: {
       scale: [1, 1.05, 1],
       transition: {
         duration: 1.5,
         repeat: Infinity,
-        repeatType: "reverse"
-      }
-    }
+        repeatType: "reverse",
+      },
+    },
   };
 
   // Animasi untuk panel
   const panelVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 10,
-      scale: 0.95 
+      scale: 0.95,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
         type: "spring",
         stiffness: 300,
         damping: 25,
-        mass: 0.8
-      }
+        mass: 0.8,
+      },
     },
-    exit: { 
-      opacity: 0, 
+    exit: {
+      opacity: 0,
       y: 10,
       scale: 0.95,
       transition: {
-        duration: 0.15
-      }
-    }
+        duration: 0.15,
+      },
+    },
   };
 
   return (
@@ -143,8 +150,8 @@ const FloatingDownloadButton = () => {
       <motion.div
         className="fixed z-50"
         style={{
-          bottom: '1.5rem',
-          right: '1.5rem',
+          bottom: "1.5rem",
+          right: "1.5rem",
         }}
         initial="hidden"
         animate="visible"
@@ -175,9 +182,10 @@ const FloatingDownloadButton = () => {
               relative flex items-center justify-center 
               w-12 h-12 md:w-14 md:h-14 
               rounded-full shadow-xl 
-              ${isOpen 
-                ? 'bg-gradient-to-r from-emerald-600 to-green-600' 
-                : 'bg-gradient-to-r from-emerald-500 to-green-500'
+              ${
+                isOpen
+                  ? "bg-gradient-to-r from-emerald-600 to-green-600"
+                  : "bg-gradient-to-r from-emerald-500 to-green-500"
               } 
               text-white hover:shadow-2xl 
               transition-all duration-200
@@ -188,7 +196,7 @@ const FloatingDownloadButton = () => {
             animate={!isOpen && !hasInteracted ? "pulse" : ""}
             variants={buttonVariants}
             disabled={downloading}
-            aria-label="Download MuslimApp"
+            aria-label="Download Ziekir+"
           >
             {downloading ? (
               <div className="w-5 h-5 md:w-6 md:h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -206,8 +214,8 @@ const FloatingDownloadButton = () => {
             <motion.div
               className="absolute"
               style={{
-                bottom: '4.5rem',
-                right: '0',
+                bottom: "4.5rem",
+                right: "0",
               }}
               variants={panelVariants}
               initial="hidden"
@@ -215,7 +223,8 @@ const FloatingDownloadButton = () => {
               exit="exit"
               ref={panelRef}
             >
-              <div className="
+              <div
+                className="
                 bg-white dark:bg-gray-800 
                 rounded-xl md:rounded-2xl 
                 shadow-2xl 
@@ -223,14 +232,19 @@ const FloatingDownloadButton = () => {
                 overflow-hidden
                 w-64 md:w-72  
                 max-w-[calc(100vw-3rem)]
-              ">
+              "
+              >
                 {/* Panel Header */}
                 <div className="bg-gradient-to-r from-emerald-500 to-green-500 p-3 md:p-4 text-white">
                   <div className="flex items-center space-x-2 md:space-x-3">
                     <Smartphone className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
                     <div className="min-w-0">
-                      <h3 className="font-bold text-sm md:text-base truncate">Download MuslimApp</h3>
-                      <p className="text-xs opacity-90 truncate">Smartren Ramadhan 1447 H</p>
+                      <h3 className="font-bold text-sm md:text-base truncate">
+                        Download Ziekir+
+                      </h3>
+                      <p className="text-xs opacity-90 truncate">
+                        Smartren Ramadhan 1447 H
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -253,7 +267,7 @@ const FloatingDownloadButton = () => {
                   </div>
 
                   {/* Download Options */}
-                  <button  
+                  <button
                     onClick={handleDownloadUniversal}
                     disabled={downloading}
                     className="
@@ -271,21 +285,28 @@ const FloatingDownloadButton = () => {
                     <div className="flex items-center justify-between">
                       <div className="min-w-0 flex-1 pr-2">
                         <div className="font-semibold text-gray-900 dark:text-white text-xs md:text-sm truncate">
-                          {downloading ? 'Sedang Mendownload...' : 'APK Universal'}
+                          {downloading
+                            ? "Sedang Mendownload..."
+                            : "APK Universal"}
                         </div>
                         <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 truncate">
-                          {downloading ? 'Tunggu sebentar...' : 'Satu file untuk semua HP'}
+                          {downloading
+                            ? "Tunggu sebentar..."
+                            : "Satu file untuk semua HP"}
                         </div>
-                      </div> 
+                      </div>
                       <div className="flex-shrink-0">
-                        <div className={`
+                        <div
+                          className={`
                           text-xs px-2 py-1 rounded-full font-medium
-                          ${downloading 
-                            ? 'bg-gray-200 dark:bg-gray-600 text-gray-500' 
-                            : 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
+                          ${
+                            downloading
+                              ? "bg-gray-200 dark:bg-gray-600 text-gray-500"
+                              : "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400"
                           }
-                        `}>
-                          {downloading ? '⏳' : '~74 MB'}
+                        `}
+                        >
+                          {downloading ? "⏳" : "~74 MB"}
                         </div>
                       </div>
                     </div>
@@ -314,8 +335,18 @@ const FloatingDownloadButton = () => {
                         </div>
                       </div>
                       <div className="flex-shrink-0">
-                        <svg className="w-3 h-3 md:w-4 md:h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <svg
+                          className="w-3 h-3 md:w-4 md:h-4 text-emerald-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
                         </svg>
                       </div>
                     </div>
@@ -325,7 +356,7 @@ const FloatingDownloadButton = () => {
                   <div className="pt-1">
                     <a
                       href="https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v4.0.0/smakzie-muslim.apk"
-                      download="muslimapp-smakzie-universal.apk"
+                      download="Ziekir+-smakzie-universal.apk"
                       className="
                         inline-flex items-center 
                         text-xs text-emerald-600 dark:text-emerald-400 
@@ -340,7 +371,9 @@ const FloatingDownloadButton = () => {
                       }}
                     >
                       <ExternalLink className="w-3 h-3 mr-1 flex-shrink-0" />
-                      <span className="truncate">Link langsung untuk APK Universal</span>
+                      <span className="truncate">
+                        Link langsung untuk APK Universal
+                      </span>
                     </a>
                   </div>
 
@@ -349,24 +382,26 @@ const FloatingDownloadButton = () => {
                     <div className="flex items-start space-x-2">
                       <AlertCircle className="w-3 h-3 md:w-4 md:h-4 text-amber-500 flex-shrink-0 mt-0.5" />
                       <p className="text-xs text-gray-600 dark:text-gray-400">
-                        Pastikan izinkan instalasi dari "Sumber Tidak Dikenal" di pengaturan Android
+                        Pastikan izinkan instalasi dari "Sumber Tidak Dikenal"
+                        di pengaturan Android
                       </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Panel Footer */}
-                 
               </div>
 
               {/* Arrow pointing to button */}
-              <div className="
+              <div
+                className="
                 absolute -bottom-1.5 right-3 md:right-4 
                 w-3 h-3 
                 bg-white dark:bg-gray-800 
                 transform rotate-45 
                 border-r border-b border-gray-200 dark:border-gray-700
-              "></div>
+              "
+              ></div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -381,31 +416,36 @@ const FloatingDownloadButton = () => {
             exit={{ opacity: 0, y: 20, x: 0 }}
             className="fixed z-50"
             style={{
-              bottom: '5rem',
-              right: '1.5rem',
+              bottom: "5rem",
+              right: "1.5rem",
             }}
           >
-            <div className="
+            <div
+              className="
               bg-gradient-to-r from-emerald-500 to-green-500 
               text-white rounded-lg md:rounded-xl 
               p-3 md:p-4 shadow-2xl
               w-64 md:w-72
               max-w-[calc(100vw-3rem)]
-            ">
+            "
+            >
               <div className="flex items-center space-x-2 md:space-x-3">
                 <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
                 <div className="min-w-0">
-                  <h4 className="font-bold text-sm md:text-base truncate">Download Berhasil Dimulai!</h4>
+                  <h4 className="font-bold text-sm md:text-base truncate">
+                    Download Berhasil Dimulai!
+                  </h4>
                   <p className="text-xs opacity-90 mt-0.5 truncate">
                     File APK sedang diunduh ke folder Downloads
                   </p>
                 </div>
               </div>
-              
+
               {/* Tips */}
               <div className="mt-2 pt-2 border-t border-white/20">
                 <p className="text-xs opacity-90">
-                  <span className="font-semibold">Tips:</span> Jika download tidak otomatis, cek folder Downloads
+                  <span className="font-semibold">Tips:</span> Jika download
+                  tidak otomatis, cek folder Downloads
                 </p>
               </div>
             </div>

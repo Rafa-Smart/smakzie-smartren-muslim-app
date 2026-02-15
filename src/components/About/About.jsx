@@ -39,12 +39,13 @@ const AboutPage = () => {
       avatarColor: "from-purple-500 to-pink-500",
       social: {
         github: "https://github.com/mdhrarrf",
-        instagram: "https://www.instagram.com/mdhrarrf?igsh=MXFkdnN3bHM1cXl5aQ==",
-        linkedin: "https://www.linkedin.com/in/muhammad-haidar-almer-rafif-4aa260398/",
+        instagram:
+          "https://www.instagram.com/mdhrarrf?igsh=MXFkdnN3bHM1cXl5aQ==",
+        linkedin:
+          "https://www.linkedin.com/in/muhammad-haidar-almer-rafif-4aa260398/",
         email: "haidarmeeting@gmail.com",
       },
-      quote:
-        "sepintar pintarnya kalian, jangan lupa tidur!",
+      quote: "sepintar pintarnya kalian, jangan lupa tidur!",
     },
 
     {
@@ -76,7 +77,8 @@ const AboutPage = () => {
       avatarColor: "from-blue-500 to-cyan-500",
       social: {
         github: "https://github.com/Rafa-Smart",
-        instagram: "https://www.instagram.com/r.k_khadafi?igsh=M3diaGR2YXJ1MDh4",
+        instagram:
+          "https://www.instagram.com/r.k_khadafi?igsh=M3diaGR2YXJ1MDh4",
         linkedin: "#",
         email: "rafaoffice@gmail.com",
       },
@@ -223,9 +225,7 @@ const AboutPage = () => {
         >
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 mb-6">
             <Users className="w-4 h-4" />
-            <span className="text-sm font-medium">
-              Tim Pengembang MuslimApp
-            </span>
+            <span className="text-sm font-medium">Tim Pengembang Ziekir+</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
@@ -236,7 +236,7 @@ const AboutPage = () => {
           </h1>
 
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
-            Tim ahli di balik MuslimApp yang berdedikasi menciptakan pengalaman
+            Tim ahli di balik Ziekir+ yang berdedikasi menciptakan pengalaman
             terbaik untuk kegiatan Smartren Ramadhan di SMKN 1 Cianjur.
           </p>
 
@@ -519,7 +519,7 @@ const AboutPage = () => {
 
             <p className="text-base md:text-lg opacity-90 mb-6 md:mb-8">
               Kami percaya bahwa teknologi harus menjadi alat yang memudahkan,
-              bukan mempersulit. MuslimApp adalah wujud komitmen kami untuk
+              bukan mempersulit. Ziekir+ adalah wujud komitmen kami untuk
               memberikan kontribusi nyata dalam pendidikan agama di sekolah.
             </p>
 
