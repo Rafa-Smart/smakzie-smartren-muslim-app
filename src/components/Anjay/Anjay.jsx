@@ -13,7 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-const NotFoundPage = () => {
+const Anjay = () => {
   return (
     <section className="py-12 px-4 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 min-h-screen flex items-center">
       <div className="container mx-auto max-w-4xl">
@@ -125,4 +125,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default Anjay;
