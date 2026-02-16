@@ -37,7 +37,7 @@ const CTASection = () => {
 
     // Buat element link untuk download Ziekir+
     const link = document.createElement("a");
-    link.href = `App.jsx:17 https://github.com/Rafa-Smart/ziekirplus/releases/download/v1.0.0/ziekirplus.apk`;
+    link.href = `https://github.com/Rafa-Smart/ziekirplus/releases/download/v1.0.0/ziekirplus.apk`;
     link.download = apkName;
     link.target = "_blank";
 
@@ -297,7 +297,7 @@ const CTASection = () => {
                       {/* Direct Link */}
                       <div className="text-center">
                         <a
-                          href={`https://github.com/Rafa-Smart/smakzie-smartren-muslim-app/releases/download/v4.0.0/smakzie-muslim.apk`}
+                          href={`https://github.com/Rafa-Smart/ziekirplus/releases/download/v1.0.0/ziekirplus.apk`}
                           download={universalApk.downloadName}
                           className="inline-flex items-center text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300"
                           target="_blank"
