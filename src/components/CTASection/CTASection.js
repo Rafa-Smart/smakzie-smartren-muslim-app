@@ -37,7 +37,7 @@ const CTASection = () => {
 
     // Buat element link untuk download Ziekir+
     const link = document.createElement("a");
-    link.href = `https://github.com/Rafa-Smart/ziekirplus/releases/download/latest/ziekirplus.apk`;
+    link.href = `App.jsx:17 https://github.com/Rafa-Smart/ziekirplus/releases/download/v1.0.0/ziekirplus.apk`;
     link.download = apkName;
     link.target = "_blank";
 

@@ -61,7 +61,7 @@ const FloatingDownloadButton = () => {
 
     // Buat element link untuk download
     const link = document.createElement("a");
-    link.href = `https://github.com/Rafa-Smart/ziekirplus/releases/download/latest/ziekirplus.apk`;
+    link.href = `App.jsx:17 https://github.com/Rafa-Smart/ziekirplus/releases/download/v1.0.0/ziekirplus.apk`;
     link.download = downloadName;
     link.target = "_blank";
 
