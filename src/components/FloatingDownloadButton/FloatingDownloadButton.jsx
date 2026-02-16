@@ -260,14 +260,14 @@ const FloatingDownloadButton = () => {
                           Rekomendasi Utama
                         </h4>
                         <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
-                          Cocok untuk 99% HP Android
+                          Cocok untuk 99% HP Android 
                         </p>
                       </div>
                     </div>
                   </div>
 
                   {/* Download Options */}
-                  <button
+                  <button // 69
                     onClick={handleDownloadUniversal}
                     disabled={downloading}
                     className="
@@ -306,7 +306,7 @@ const FloatingDownloadButton = () => {
                           }
                         `}
                         >
-                          {downloading ? "⏳" : "~74 MB"}
+                          {downloading ? "⏳" : "~69 MB"}
                         </div>
                       </div>
                     </div>
